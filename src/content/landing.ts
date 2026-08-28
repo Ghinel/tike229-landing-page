@@ -62,8 +62,8 @@ export const siteConfig = {
   publisher: "GHINEL Labs",
   email: "support@ghinel.com",
   url: "https://tike229.com",
-  /** Destination de tous les boutons d'action. ← REMPLACER par l'URL réelle. */
-  appUrl: "https://app.tike229.com/inscription",
+  /** Destination de tous les boutons d'action : l'application TIKÉ 229. */
+  appUrl: "https://tike229.ghinel.com/",
   description:
     "TIKÉ 229 met votre billetterie en ligne et réunit les événements du Bénin au même endroit. Paiement Mobile Money, billet QR automatique, 7 % par billet vendu.",
   /** La barre de navigation reste opaque même en haut de page. */

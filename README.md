@@ -74,7 +74,7 @@ Une formule passe de brouillon à publiée en changeant `status: "draft"` en
 `siteConfig` porte la destination des boutons et deux bascules reprises de la
 maquette :
 
-- `appUrl` — **à renseigner** : les six boutons d'action pointent tous dessus
+- `appUrl` — destination des six boutons d'action (l'app TIKÉ 229)
 - `navAlwaysOpaque` — la barre reste opaque même en haut de page
 - `showMobileCtaBar` — barre d'action fixe en bas d'écran sur mobile
 
