@@ -97,3 +97,32 @@ Le point de bascule mobile/desktop est le variant `wide:` (900 px), défini dans
 `globals.css` — pas un breakpoint Tailwind par défaut.
 
 Les animations sont désactivées sous `prefers-reduced-motion: reduce`.
+
+## Déploiement
+
+Le site est **entièrement statique**. `npm run build` produit un dossier `out/`
+de fichiers plats, prêt à être servi par n'importe quel hébergeur.
+
+### Cloudflare Pages
+
+| Réglage | Valeur |
+| --- | --- |
+| Framework preset | Next.js (Static HTML Export) |
+| Build command | `npm run build` |
+| Build output directory | `out` |
+| Version de Node | lue dans `.node-version` (22) |
+
+Chaque poussée sur `main` redéploie la production ; chaque autre branche reçoit
+sa propre URL de preview.
+
+### Les images doivent être optimisées à la main
+
+L'export statique désactive l'optimiseur de `next/image` — il lui faut un
+serveur. Les fichiers de `public/images/` sont donc servis **tels quels**.
+
+Avant d'ajouter une photo : la redimensionner à sa taille d'affichage réelle
+(x2 pour les écrans à densité double) et la convertir en WebP. Les originaux
+pleine résolution restent dans `design/photos/`, hors du site publié.
+
+Ordre de grandeur, sur les trois photos du hero : 2,2 Mo de JPEG bruts sont
+devenus 220 Ko de WebP, sans différence visible.

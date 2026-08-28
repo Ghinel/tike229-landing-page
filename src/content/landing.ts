@@ -106,14 +106,14 @@ export const hero: {
   kicker: "EN LIGNE · MOBILE MONEY · BILLET QR · 7 % PAR BILLET",
   main: {
     kind: "image",
-    src: "/images/hero-foule.jpg",
+    src: "/images/hero-foule.webp",
     alt: "Foule en train de danser face à la scène lors d'un festival de plage au Bénin",
   },
   asides: [
     {
       media: {
         kind: "image",
-        src: "/images/hero-humoriste.jpg",
+        src: "/images/hero-humoriste.webp",
         alt: "Humoriste au micro sur scène devant une salle comble",
       },
       className: "top-[14%] right-[6%] h-[280px] w-[220px]",
@@ -122,7 +122,7 @@ export const hero: {
     {
       media: {
         kind: "image",
-        src: "/images/hero-rooftop.jpg",
+        src: "/images/hero-rooftop.webp",
         alt: "Soirée sur un rooftop éclairé de nuit",
       },
       className: "right-[26%] bottom-[-40px] h-[150px] w-[180px]",
