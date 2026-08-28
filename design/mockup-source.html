@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="3ec8d519-0c65-40bc-92e1-dd39b60c31b8"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("1555fb46-7ae3-45f3-8e85-a1e8c12b5a21") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("8d6ce24e-92e2-401e-9c47-bdbc3b820eb8") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("22e3eafc-00c7-484a-a85b-4aacb91a9c0c") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("d781a8ac-c128-440a-87b4-08525d23f07d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("be8e0680-f740-40bb-a3be-8d1438d6fcfe") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("9a215763-ee47-4a90-bce1-36893212ecc8") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("53fe980e-8a3b-4f76-8c4a-7854c9f7950e") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("048eaead-723a-4dce-beae-d894aa3538b9") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fa1bc206-33f5-4dce-a221-44429c9a75a5") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5db4052a-6be2-4a2e-af9e-c6ffba791ff9") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("d781a8ac-c128-440a-87b4-08525d23f07d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("be8e0680-f740-40bb-a3be-8d1438d6fcfe") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("9a215763-ee47-4a90-bce1-36893212ecc8") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("53fe980e-8a3b-4f76-8c4a-7854c9f7950e") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("048eaead-723a-4dce-beae-d894aa3538b9") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fa1bc206-33f5-4dce-a221-44429c9a75a5") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5db4052a-6be2-4a2e-af9e-c6ffba791ff9") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("63304343-144b-4d40-bb88-75de28c2ff78") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("03a24b22-22af-4d6d-9124-62ceff28980b") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("16acf362-76c8-4bee-ac5f-bd3b650f265c") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5ac14256-a558-40bd-a129-56f6514fe490") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("18f873c4-6092-4c80-96da-253a60371ae8") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("01f4efbc-54bb-40ed-b6a5-33f5d5afda64") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+  body{margin:0;background:#000;font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+  @keyframes lineUp{from{opacity:0;transform:translateY(100%);clip-path:inset(100% 0 0 0);}to{opacity:1;transform:translateY(0);clip-path:inset(0 0 0 0);}}
+  @keyframes heroReveal{from{clip-path:inset(100% 0 0 0);}to{clip-path:inset(0 0 0 0);}}
+  @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+  @media (max-width:899px){.ds-nav-links{display:none!important;}.ds-hero-secondary{display:none!important;}.ds-universe-grid{grid-template-columns:1fr!important;}.ds-pricing-row{overflow-x:auto!important;scroll-snap-type:x mandatory;}.ds-pricing-card{scroll-snap-align:center;min-width:82vw!important;}.ds-footer-row{flex-direction:column!important;align-items:flex-start!important;gap:24px!important;}.ds-margin-list{writing-mode:horizontal-tb!important;flex-direction:row!important;flex-wrap:wrap!important;}}
+  a{color:#E89536;}
+  a:hover{color:#F7F4F1;}
+</style>
+</helmet>
+<div style="background:#000;color:#F7F4F1;position:relative;overflow-x:hidden;">
+
+  <nav style="{{navStyle}}">
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.02em;">TIKÉ 229</div>
+    <div class="ds-nav-links" style="display:flex;gap:32px;font-size:15px;color:#F7F4F1;">
+      <a href="#univers" style="text-decoration:none;color:#F7F4F1;">Univers</a>
+      <a href="#comment" style="text-decoration:none;color:#F7F4F1;">Comment ça marche</a>
+      <a href="#tarifs" style="text-decoration:none;color:#F7F4F1;">Tarifs</a>
+    </div>
+    <button style="background:#E89536;color:#000;border:none;border-radius:2px;padding:11px 20px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter';">Créer ma billetterie</button>
+  </nav>
+
+  <!-- 01 HERO -->
+  <section style="position:relative;min-height:100vh;display:flex;flex-direction:column;">
+    <div style="position:relative;min-height:62vh;padding-top:80px;display:grid;grid-template-columns:1fr;">
+      <div style="{{heroMainStyle}}border:2px dashed rgba(247,244,241,0.3);">
+        <div style="position: absolute; inset: 0; background: url(&quot;9bbc2be4-416a-42f3-b54b-7e1afbbeae3f&quot;) center / cover no-repeat"></div>
+        
+      </div>
+      <div class="ds-hero-secondary" style="position: absolute; right: 6%; top: 14%; width: 220px; height: 280px; {{stripestyle1}}box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 2px dashed rgba(247,244,241,0.3); animation: heroReveal 900ms cubic-bezier(0.16,1,0.3,1) 200ms both; background: url(&quot;1c169af1-fb4d-4bf5-9033-483e0c740893&quot;) center / cover no-repeat">
+        <div style="position:absolute;bottom:10px;left:10px;font-family:'JetBrains Mono';font-size:10px;color:#F7F4F1;opacity:0.7;">PHOTO — HUMORISTE AU MICRO</div>
+      </div>
+      <div class="ds-hero-secondary" style="position: absolute; right: 26%; bottom: -40px; width: 180px; height: 150px; {{stripestyle2}}box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 2px dashed rgba(247,244,241,0.3); animation: heroReveal 900ms cubic-bezier(0.16,1,0.3,1) 350ms both; background: url(&quot;18bb7982-73b8-4721-965c-171aad17440c&quot;) center / cover no-repeat">
+        <div style="position:absolute;bottom:10px;left:10px;font-family:'JetBrains Mono';font-size:10px;color:#F7F4F1;opacity:0.7;">PHOTO — ROOFTOP DE NUIT</div>
+      </div>
+      <div style="position:absolute;top:32px;right:32px;width:36px;height:36px;opacity:0.04;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
+        <sc-for list="{{qrDots}}" as="d" hint-placeholder-count="9"><div style="background:#F7F4F1;"></div></sc-for>
+      </div>
+    </div>
+
+    <div style="position:relative;padding:0 24px 96px;max-width:640px;">
+      <div style="overflow:hidden;"><h1 style="font-family: 'Bricolage Grotesque',sans-serif; font-weight: 800; font-size: clamp(40px,8vw,104px); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 4px; animation: lineUp 700ms cubic-bezier(0.16,1,0.3,1) 100ms both">Faites vivre l'événement.</h1></div>
+      <div style="overflow:hidden;"><h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(40px,8vw,104px);line-height:1.02;letter-spacing:-0.03em;margin:0 0 20px;color:#E89536;animation:lineUp 700ms cubic-bezier(0.16,1,0.3,1) 180ms both;">On s'occupe des billets.</h1></div>
+      <p style="font-size:17px;line-height:1.6;color:#F7F4F1;max-width:52ch;margin:0 0 28px;animation:fadeUp 600ms ease 400ms both;">TIKÉ 229 met votre billetterie en ligne et réunit les événements du Bénin au même endroit. Vos billets se vendent en Mobile Money, votre public reçoit son QR immédiatement.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-bottom:28px;animation:fadeUp 600ms ease 500ms both;">
+        <button style="{{ctaMainStyle}}" onmouseenter="this.style.boxShadow='0 0 32px rgba(232,149,54,0.55)';this.style.transform='translateY(-2px)';" onmouseleave="this.style.boxShadow='none';this.style.transform='translateY(0)';">Créer ma billetterie</button>
+        <a href="#univers" style="color:#F7F4F1;text-decoration:underline;text-decoration-color:#8E8792;font-size:14px;">Voir la billetterie →</a>
+      </div>
+      <div style="font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.08em;color:#8E8792;animation:fadeUp 600ms ease 600ms both;">EN LIGNE · MOBILE MONEY · BILLET QR · 7 % PAR BILLET</div>
+    </div>
+  </section>
+
+  <!-- 02 BANDE D'AFFICHES -->
+  <section style="position:relative;padding:40px 0;overflow:hidden;background:#000;border-top:2px dashed rgba(247,244,241,0.15);">
+    <div style="text-align:center;font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.08em;color:#8E8792;margin-bottom:28px;">TOUS LES ÉVÉNEMENTS DU BÉNIN. UN SEUL ENDROIT.</div>
+    <div style="transform:rotate(-2deg);width:110%;margin-left:-5%;">
+      <div style="display:flex;gap:16px;width:max-content;animation:marquee 60s linear infinite;">
+        <sc-for list="{{marqueeItems}}" as="poster" hint-placeholder-count="10">
+          <div style="width:150px;height:210px;{{poster.stripe}}flex-shrink:0;position:relative;border:2px dashed rgba(247,244,241,0.3);">
+            <div style="position:absolute;bottom:8px;left:8px;font-family:'JetBrains Mono';font-size:9px;color:#F7F4F1;opacity:0.85;">AFFICHE — À COMPLÉTER</div>
+          </div>
+        </sc-for>
+        <sc-for list="{{marqueeItems}}" as="poster2" hint-placeholder-count="10">
+          <div style="width:150px;height:210px;{{poster2.stripe}}flex-shrink:0;position:relative;border:2px dashed rgba(247,244,241,0.3);">
+            <div style="position:absolute;bottom:8px;left:8px;font-family:'JetBrains Mono';font-size:9px;color:#F7F4F1;opacity:0.85;">AFFICHE — À COMPLÉTER</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 LE MIROIR -->
+  <section style="position:relative;background:#000;padding:120px 24px;display:flex;gap:48px;">
+    <div style="flex:1;max-width:680px;">
+      <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,48px);letter-spacing:-0.02em;line-height:1.15;margin:0 0 40px;">Organiser un événement, c'est déjà assez de travail.</p>
+      <p style="font-size:17px;line-height:1.7;color:#F7F4F1;max-width:60ch;margin:0 0 28px;">Les paiements arrivent sur trois numéros Mobile Money différents. Les confirmations se perdent dans une conversation WhatsApp à 400 messages. Le jour J, quelqu'un coche des noms sur une feuille imprimée pendant que la file s'allonge. Et deux billets identiques se présentent à l'entrée.</p>
+      <p style="font-size:17px;line-height:1.7;color:#F7F4F1;max-width:60ch;margin:0;">Vous ne saurez ce que l'événement a réellement fait que le lendemain.</p>
+    </div>
+    <div class="ds-margin-list" style="writing-mode:vertical-rl;display:flex;flex-direction:column;align-items:flex-end;gap:8px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.08em;color:#8E8792;">
+      <span>ARTISTES</span><span>·</span><span>LIEU</span><span>·</span><span>COMMUNICATION</span><span>·</span><span>PARTENAIRES</span><span>·</span><span>PUBLIC</span><span>·</span><span style="color:#E89536;">BILLETTERIE</span>
+    </div>
+  </section>
+
+  <!-- 04 TIKÉ 229 ENTRE EN SCÈNE -->
+  <section style="position:relative;background:#0F0D12;padding:100px 24px;overflow:hidden;">
+    <div style="position:absolute;top:-20%;left:-10%;width:70%;height:140%;background:radial-gradient(ellipse at center,rgba(198,62,30,0.35),transparent 70%);transform:rotate(-18deg);pointer-events:none;"></div>
+    <h2 style="position:relative;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,5vw,56px);letter-spacing:-0.02em;line-height:1.1;margin:0 0 64px;max-width:800px;">Vous créez l'événement. <span style="color:#E89536;">TIKÉ 229</span> vous aide à le remplir.</h2>
+    <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;">
+      <sc-for list="{{benefits}}" as="b" hint-placeholder-count="4">
+        <div style="{{b.marginStyle}}">
+          <div style="width:100%;aspect-ratio:4/3;border:2px dashed rgba(232,149,54,0.4);border-radius:6px;position:relative;{{b.stripe}}margin-bottom:20px;">
+            <div style="position:absolute;top:-1px;right:-1px;width:16px;height:16px;background:#0F0D12;border-radius:50%;transform:translate(50%,-50%);"></div>
+            <div style="position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;background:#0F0D12;border-radius:50%;transform:translate(50%,50%);"></div>
+            <div style="position:absolute;top:10px;left:10px;font-family:'JetBrains Mono';font-size:9px;color:#F7F4F1;opacity:0.7;">CAPTURE — INTERFACE</div>
+          </div>
+          <p style="font-size:17px;line-height:1.6;color:#F7F4F1;margin:0;max-width:34ch;">{{b.text}}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- 05 POUR TOUS LES UNIVERS -->
+  <section id="univers" style="position:relative;background:#000;padding:100px 24px 60px;">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,48px);letter-spacing:-0.02em;margin:0 0 48px;">Quel que soit votre univers, le billet est le même.</h2>
+    <div class="ds-universe-grid" style="display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-auto-rows:220px;gap:16px;">
+      <sc-for list="{{universes}}" as="u" hint-placeholder-count="6">
+        <div style="{{u.gridArea}}position:relative;border-radius:4px;overflow:hidden;{{u.stripe}}border:2px dashed rgba(247,244,241,0.3);">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.85));"></div>
+          <div style="position:absolute;top:12px;left:14px;font-family:'JetBrains Mono';font-size:9px;color:#F7F4F1;opacity:0.7;">PHOTO — {{u.name}}</div>
+          <div style="position:absolute;bottom:20px;left:20px;right:20px;">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:28px;letter-spacing:-0.02em;color:#F7F4F1;margin-bottom:6px;">{{u.name}}</div>
+            <div style="font-family:'JetBrains Mono';font-size:10px;letter-spacing:0.08em;color:#8E8792;">{{u.meta}}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- 06 COMMENT ÇA MARCHE -->
+  <section id="comment" style="position:relative;background:#000;padding:100px 24px;border-top:2px dashed rgba(247,244,241,0.15);">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,48px);letter-spacing:-0.02em;margin:0 0 64px;">Comment ça marche</h2>
+    <div style="max-width:640px;position:relative;padding-left:32px;border-left:2px dashed rgba(247,244,241,0.25);">
+      <sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
+        <div style="position:relative;margin-bottom:56px;">
+          <div style="position:absolute;left:-40px;top:2px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid #E89536;"></div>
+          <div style="font-family:'JetBrains Mono';font-size:12px;letter-spacing:0.08em;color:#E89536;margin-bottom:8px;">{{s.n}} — {{s.title}}</div>
+          <div style="font-size:18px;line-height:1.5;color:#F7F4F1;">{{s.desc}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- 07 TARIFS -->
+  <section id="tarifs" style="position:relative;background:#0F0D12;padding:100px 24px;">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,48px);letter-spacing:-0.02em;margin:0 0 12px;">Un prix clair. Vous ne payez que si vous vendez.</h2>
+    <div class="ds-pricing-row" style="display:flex;gap:24px;margin-top:56px;align-items:stretch;">
+      <div class="ds-pricing-card" style="{{ticketCardStyle}}flex:1;padding:32px 28px;">
+        <div style="font-family:'JetBrains Mono';font-size:11px;color:#8E8792;position:absolute;top:16px;right:20px;">01</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;margin-bottom:24px;">FORMULE 1</div>
+        <div style="font-family:'JetBrains Mono';font-size:13px;color:#8E8792;line-height:2;">À REMPLIR — PRIX<br>À REMPLIR — CIBLE<br>À REMPLIR — INCLUS</div>
+        <button style="margin-top:24px;width:100%;background:transparent;color:#F7F4F1;border:1px solid #8E8792;border-radius:2px;padding:12px;font-size:14px;cursor:pointer;">À REMPLIR</button>
+      </div>
+      <div class="ds-pricing-card" style="{{ticketCardStyle}}flex:1.1;padding:36px 30px;border:1px solid #E89536;box-shadow:0 0 48px rgba(232,149,54,0.22);">
+        <div style="font-family:'JetBrains Mono';font-size:11px;color:#E89536;position:absolute;top:16px;right:20px;">02</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;margin-bottom:24px;">ESSENTIEL</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:20px;">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:72px;color:#E89536;letter-spacing:-0.03em;">7</span>
+          <span style="font-size:28px;color:#E89536;">%</span>
+        </div>
+        <div style="font-size:14px;color:#F7F4F1;margin-bottom:20px;">par billet vendu · Tout organisateur qui démarre</div>
+        <div style="border-top:1px dashed rgba(247,244,241,0.25);padding-top:18px;font-size:14px;line-height:1.9;color:#F7F4F1;">
+          Événement en ligne<br>Lien de vente unique<br>Paiement Mobile Money<br>Billet QR automatique<br>Récupération par e-mail
+        </div>
+        <button style="{{ctaMainStyle}}margin-top:24px;width:100%;">Créer ma billetterie</button>
+      </div>
+      <div class="ds-pricing-card" style="{{ticketCardStyle}}flex:1;padding:32px 28px;">
+        <div style="font-family:'JetBrains Mono';font-size:11px;color:#8E8792;position:absolute;top:16px;right:20px;">03</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;margin-bottom:24px;">FORMULE 3</div>
+        <div style="font-family:'JetBrains Mono';font-size:13px;color:#8E8792;line-height:2;">À REMPLIR — PRIX<br>À REMPLIR — CIBLE<br>À REMPLIR — INCLUS</div>
+        <button style="margin-top:24px;width:100%;background:transparent;color:#F7F4F1;border:1px solid #8E8792;border-radius:2px;padding:12px;font-size:14px;cursor:pointer;">À REMPLIR</button>
+      </div>
+    </div>
+    <div style="text-align:center;font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.08em;color:#8E8792;margin-top:40px;">AUCUN FRAIS D'ENTRÉE · AUCUN ABONNEMENT SUR LA FORMULE ESSENTIEL</div>
+  </section>
+
+  <!-- 08 PREUVE -->
+  <section style="position:relative;background:#000;padding:100px 24px;border-top:2px dashed rgba(247,244,241,0.15);">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,48px);letter-spacing:-0.02em;margin:0 0 48px;">Ils sont déjà passés par TIKÉ 229.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-bottom:80px;">
+      <sc-for list="{{proofPosters}}" as="p" hint-placeholder-count="4">
+        <div>
+          <div style="aspect-ratio:3/4;{{p.stripe}}margin-bottom:10px;border:2px dashed rgba(247,244,241,0.3);position:relative;">
+            <div style="position:absolute;top:10px;left:10px;font-family:'JetBrains Mono';font-size:9px;color:#F7F4F1;opacity:0.8;">AFFICHE ÉVÉNEMENT</div>
+          </div>
+          <div style="font-family:'JetBrains Mono';font-size:10px;letter-spacing:0.05em;color:#8E8792;">ÉVÉNEMENT RÉEL — À COMPLÉTER</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;">
+      <sc-for list="{{testimonialSlots}}" as="t" hint-placeholder-count="3">
+        <div style="border-top:2px dashed rgba(247,244,241,0.2);padding-top:24px;">
+          <div style="display:flex;gap:14px;align-items:center;margin-bottom:16px;">
+            <div style="width:48px;height:48px;border-radius:50%;{{t.stripe}}border:2px dashed rgba(247,244,241,0.3);"></div>
+            <div style="font-family:'JetBrains Mono';font-size:11px;color:#8E8792;">ORGANISATEUR — À COMPLÉTER</div>
+          </div>
+          <p style="font-size:15px;line-height:1.6;color:#8E8792;font-style:italic;margin:0;">Témoignage à venir.</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- 09 MOMENT ÉMOTIONNEL -->
+  <section style="position:relative;height:100vh;display:flex;align-items:flex-end;justify-content:center;{{stripeStyle3}}border-top:2px dashed rgba(247,244,241,0.3);border-bottom:2px dashed rgba(247,244,241,0.3);">
+    <div style="position:absolute;top:16px;left:16px;font-family:'JetBrains Mono';font-size:10px;color:#F7F4F1;opacity:0.7;z-index:1;">PHOTO — FOULE DE DOS FACE À LA SCÈNE</div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.9));"></div>
+    <div style="position:relative;text-align:center;padding-bottom:80px;padding-left:24px;padding-right:24px;">
+      <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,6vw,64px);letter-spacing:-0.02em;text-transform:uppercase;line-height:1.1;margin:0 0 20px;max-width:900px;">Les meilleurs événements ne se racontent pas. Ils se vivent.</p>
+      <p style="font-size:16px;color:#8E8792;margin:0;">Vous vous occupez de ça. Nous, des billets.</p>
+    </div>
+  </section>
+
+  <!-- 10 CTA FINAL -->
+  <section style="position:relative;min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:80px 24px;overflow:hidden;">
+    <div style="position:absolute;inset:0;{{stripeStyle4}}border:2px dashed rgba(247,244,241,0.3);"></div>
+    <div style="position:absolute;top:16px;left:16px;font-family:'JetBrains Mono';font-size:10px;color:#F7F4F1;opacity:0.7;z-index:1;">PHOTO — SALLE QUI SE REMPLIT, VUE DE L'ENTRÉE</div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.5),rgba(0,0,0,0.95));"></div>
+    <div style="position:absolute;bottom:32px;left:32px;width:36px;height:36px;opacity:0.04;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
+      <sc-for list="{{qrDots}}" as="d2" hint-placeholder-count="9"><div style="background:#F7F4F1;"></div></sc-for>
+    </div>
+    <h2 style="position:relative;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(36px,8vw,96px);letter-spacing:-0.03em;text-transform:uppercase;line-height:1;margin:0 0 48px;max-width:900px;">Votre prochain événement commence ici.</h2>
+    <div style="position:relative;">
+      <button style="{{ctaMainStyle}}width:100%;padding:20px;font-size:17px;" onmouseenter="this.style.boxShadow='0 0 32px rgba(232,149,54,0.55)';this.style.transform='translateY(-2px)';" onmouseleave="this.style.boxShadow='none';this.style.transform='translateY(0)';">Publier mon événement sur TIKÉ 229</button>
+      <div style="text-align:center;font-family:'JetBrains Mono';font-size:12px;letter-spacing:0.05em;color:#8E8792;margin-top:16px;">7 % par billet vendu. Rien d'autre.</div>
+    </div>
+  </section>
+
+  <!-- 11 FOOTER -->
+  <footer style="position:relative;background:#000;padding:56px 24px;border-top:2px dashed rgba(247,244,241,0.15);">
+    <div class="ds-footer-row" style="display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;margin-bottom:4px;">TIKÉ 229</div>
+        <div style="font-size:13px;color:#8E8792;">Un produit GHINEL Labs</div>
+      </div>
+      <div style="display:flex;gap:24px;font-size:13px;flex-wrap:wrap;">
+        <a href="#" style="text-decoration:none;">Conditions d'utilisation</a>
+        <a href="#" style="text-decoration:none;">Politique de confidentialité</a>
+        <a href="mailto:support@ghinel.com" style="text-decoration:none;">support@ghinel.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{showMobileBar}}" hint-placeholder-val="{{false}}">
+    <div style="position:fixed;bottom:0;left:0;right:0;background:rgba(15,13,18,0.9);backdrop-filter:blur(12px);padding:14px 16px;display:flex;align-items:center;gap:12px;z-index:50;">
+      <div style="font-family:'JetBrains Mono';font-size:10px;color:#8E8792;white-space:nowrap;">7 % /<br>BILLET</div>
+      <button style="{{ctaMainStyle}}flex:1;">Créer ma billetterie</button>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;navAlwaysOpaque&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Navigation&quot;},&quot;showMobileCtaBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Navigation&quot;}}">
+class Component extends DCLogic {
+  state = { scrollY: 0, width: typeof window !== 'undefined' ? window.innerWidth : 390 };
+
+  componentDidMount() {
+    this._onScroll = () => this.setState({ scrollY: window.scrollY });
+    this._onResize = () => this.setState({ width: window.innerWidth });
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onResize);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+  }
+
+  stripe(hue, sat, light, angle) {
+    return `background:repeating-linear-gradient(${angle}deg,hsl(${hue} ${sat}% ${light}%),hsl(${hue} ${sat}% ${light}%) 10px,hsl(${hue} ${sat}% ${Math.max(light-4,4)}%) 10px,hsl(${hue} ${sat}% ${Math.max(light-4,4)}%) 20px);`;
+  }
+
+  renderVals() {
+    const scrolled = (this.props.navAlwaysOpaque ?? false) || this.state.scrollY > 10;
+    const isMobile = this.state.width < 900;
+
+    const navStyle = {
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      padding: '18px 24px', transition: 'background 200ms,backdrop-filter 200ms',
+      background: scrolled ? 'rgba(0,0,0,0.72)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(14px)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(247,244,241,0.08)' : 'none'
+    };
+    const navStyleStr = Object.entries(navStyle).map(([k,v]) => `${k.replace(/[A-Z]/g,m=>'-'+m.toLowerCase())}:${v}`).join(';');
+
+    const ctaMainStyle = 'background:#E89536;color:#000;border:none;border-radius:2px;padding:16px 28px;font-size:15px;font-weight:500;cursor:pointer;font-family:Inter;transition:box-shadow 180ms,transform 180ms;';
+    const ticketCardStyle = 'position:relative;background:#000;border:1px solid rgba(247,244,241,0.12);border-radius:6px;';
+
+    const benefits = [
+      { text: "Votre événement en ligne en quelques minutes. Titre, date, lieu, catégories de billets et tarifs.", marginStyle:'' },
+      { text: "Un lien unique à partager partout. WhatsApp, Instagram, vos affiches, vos stories.", marginStyle: isMobile?'':'margin-top:40px;' },
+      { text: "Le paiement que votre public utilise déjà. Mobile Money, sans compte à créer, sans carte bancaire.", marginStyle:'' },
+      { text: "Un billet QR par acheteur. Émis automatiquement, récupérable par code e-mail à tout moment.", marginStyle: isMobile?'':'margin-top:40px;' },
+    ].map((b,i) => ({ ...b, stripe: this.stripe([210,20,25,340][i%4], 35, 16, [12,-8,20,-15][i%4]) }));
+
+    const universes = [
+      { name:'Concerts', meta:'ÉVÉNEMENTS RÉELS — À COMPLÉTER', gridArea: isMobile?'':'grid-row:span 2;', hue:20 },
+      { name:'Chills', meta:'ÉVÉNEMENTS RÉELS — À COMPLÉTER', gridArea:'', hue:35 },
+      { name:'Humour', meta:'ÉVÉNEMENTS RÉELS — À COMPLÉTER', gridArea:'', hue:0 },
+      { name:'Culture', meta:'ÉVÉNEMENTS RÉELS — À COMPLÉTER', gridArea: isMobile?'':'grid-column:span 2;', hue:280 },
+      { name:'Festivals', meta:'ÉVÉNEMENTS RÉELS — À COMPLÉTER', gridArea:'', hue:340 },
+      { name:'Shows', meta:'ÉVÉNEMENTS RÉELS — À COMPLÉTER', gridArea:'', hue:15 },
+    ].map(u => ({ ...u, stripe: this.stripe(u.hue, 30, 14, 25) }));
+
+    const steps = [
+      { n:'01', title:'CRÉEZ', desc:'Votre événement, vos catégories de billets, vos tarifs.' },
+      { n:'02', title:'PARTAGEZ', desc:'Un lien unique, partout où vous communiquez déjà.' },
+      { n:'03', title:'VENDEZ', desc:'Votre public paie en Mobile Money et reçoit son billet.' },
+      { n:'04', title:'FAITES VIVRE', desc:'Vous ouvrez les portes. Chaque billet porte son QR.' },
+    ];
+
+    const marqueeItems = Array.from({length:10}, (_,i) => ({ stripe: this.stripe([10,30,200,340,20][i%5], 30, 15, 15) }));
+    const proofPosters = Array.from({length:4}, (_,i) => ({ stripe: this.stripe([10,30,200,340][i%4], 30, 16, 20) }));
+    const testimonialSlots = Array.from({length:3}, (_,i) => ({ stripe: this.stripe(30, 20, 20, 45) }));
+    const qrDots = Array.from({length:9}, () => ({}));
+
+    return {
+      navStyle: navStyleStr,
+      ctaMainStyle,
+      ticketCardStyle,
+      heroMainStyle: `position:absolute;inset:0;${this.stripe(15,30,18,-10)}animation:heroReveal 900ms cubic-bezier(0.16,1,0.3,1) both;`,
+      stripeStyle1: this.stripe(20,30,15,10),
+      stripeStyle2: this.stripe(35,25,20,5),
+      stripeStyle3: this.stripe(10,25,12,-6),
+      stripeStyle4: this.stripe(20,30,10,8),
+      benefits, universes, steps, marqueeItems, proofPosters, testimonialSlots, qrDots,
+      showMobileBar: (this.props.showMobileCtaBar ?? true) && isMobile && this.state.scrollY > (typeof window !== 'undefined' ? window.innerHeight * 0.9 : 700),
+    };
+  }
+}
+</script>
+
+
+</body></html>

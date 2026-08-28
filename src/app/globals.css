@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette — noir profond, orange braise, blanc os */
+  --color-ink: #000000;
+  --color-surface: #0f0d12;
+  --color-bone: #f7f4f1;
+  --color-muted: #8e8792;
+  --color-accent: #e89536;
+  --color-ember: #c63e1e;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /* Bascule mobile/desktop de la maquette */
+  --breakpoint-wide: 900px;
+
+  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-line-up: line-up 700ms var(--ease-reveal) both;
+  --animate-reveal: reveal 900ms var(--ease-reveal) both;
+  --animate-fade-up: fade-up 600ms ease both;
+  --animate-marquee: marquee 60s linear infinite;
+
+  @keyframes line-up {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+      clip-path: inset(100% 0 0 0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  @keyframes reveal {
+    from {
+      clip-path: inset(100% 0 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Les ancres du menu ne doivent pas passer sous la barre fixe */
+  :target {
+    scroll-margin-top: 96px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
