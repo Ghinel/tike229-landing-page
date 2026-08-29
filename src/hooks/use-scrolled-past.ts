@@ -1,26 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Passe à `true` une fois le seuil dépassé. Le seuil peut être une fonction
- * (ex. `() => window.innerHeight * 0.9`) réévaluée au redimensionnement.
+ * (ex. `() => window.innerHeight * 0.9`) réévaluée au redimensionnement ;
+ * la définir hors du composant pour ne pas réabonner à chaque rendu.
  *
  * L'état ne change qu'au franchissement du seuil : contrairement à la maquette
  * qui stockait `scrollY`, on ne re-rend pas à chaque pixel scrollé.
  */
 export function useScrolledPast(threshold: number | (() => number)): boolean {
   const [passed, setPassed] = useState(false);
-  const thresholdRef = useRef(threshold);
-  thresholdRef.current = threshold;
 
   useEffect(() => {
     let frame = 0;
 
     const read = () => {
       frame = 0;
-      const current = thresholdRef.current;
-      const limit = typeof current === "function" ? current() : current;
+      const limit = typeof threshold === "function" ? threshold() : threshold;
       setPassed(window.scrollY > limit);
     };
 
@@ -37,7 +35,7 @@ export function useScrolledPast(threshold: number | (() => number)): boolean {
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
     };
-  }, []);
+  }, [threshold]);
 
   return passed;
 }
