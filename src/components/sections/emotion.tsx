@@ -7,7 +7,7 @@ import { Media } from "../ui/media";
 export function Emotion() {
   return (
     <section className="relative flex h-dvh items-end justify-center overflow-clip border-y-2 border-dashed border-bone/30">
-      <Media media={emotion.media} sizes="100vw" />
+      <Media media={emotion.media} sizes="100vw" drift />
 
       <div aria-hidden className="absolute inset-0 bg-linear-to-b from-black/10 to-black/90" />
 

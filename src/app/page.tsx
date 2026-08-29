@@ -11,6 +11,7 @@ import { PosterMarquee } from "@/components/sections/poster-marquee";
 import { Pricing } from "@/components/sections/pricing";
 import { Proof } from "@/components/sections/proof";
 import { Steps } from "@/components/sections/steps";
+import { Ticker } from "@/components/sections/ticker";
 import { Universes } from "@/components/sections/universes";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
@@ -28,6 +29,7 @@ export default function Page() {
       <SiteNav />
       <main id="contenu">
         <Hero />
+        {sections.ticker && <Ticker />}
         {sections.marquee && <PosterMarquee />}
         {sections.mirror && <Mirror />}
         {sections.benefits && <Benefits />}

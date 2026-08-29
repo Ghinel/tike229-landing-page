@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import { hero } from "@/content/landing";
 import { cn } from "@/lib/cn";
 import { ctaHref } from "@/lib/cta";
@@ -17,20 +19,24 @@ export function Hero() {
   return (
     <section id="hero" className="relative flex min-h-dvh flex-col">
       <div className="relative grid min-h-[62vh] grid-cols-1 pt-20">
-        <div className="animate-reveal absolute inset-0 overflow-hidden border-2 border-dashed border-bone/30">
-          <Media media={hero.main} priority sizes="100vw" />
+        <div className="animate-reveal perforation absolute inset-0 overflow-hidden">
+          <Media media={hero.main} priority sizes="100vw" className="kenburns" />
         </div>
 
-        {hero.asides.map((aside) => (
+        {hero.asides.map((aside, i) => (
+          // Deux boîtes : la parallaxe (défilement) et l'apparition (temps)
+          // sont deux animations, qui ne peuvent pas partager un élément.
           <div
             key={aside.className}
-            className={cn(
-              "animate-reveal absolute hidden overflow-hidden border-2 border-dashed border-bone/30 shadow-[0_30px_60px_rgba(0,0,0,0.6)] wide:block",
-              aside.className,
-            )}
-            style={delay(aside.delay)}
+            className={cn("parallax absolute hidden wide:block", aside.className)}
+            style={{ "--parallax": `${-40 - i * 30}px` } as CSSProperties}
           >
-            <Media media={aside.media} sizes="220px" />
+            <div
+              className="animate-reveal relative size-full overflow-hidden border-2 border-dashed border-bone/30 shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
+              style={delay(aside.delay)}
+            >
+              <Media media={aside.media} sizes="220px" />
+            </div>
           </div>
         ))}
 

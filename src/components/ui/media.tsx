@@ -14,6 +14,8 @@ type MediaProps = {
    */
   sizes?: string;
   priority?: boolean;
+  /** Placeholder seulement : les rayures dérivent lentement. */
+  drift?: boolean;
 };
 
 /** La légende d'un placeholder n'apparaît qu'en développement : le public ne doit jamais lire « À COMPLÉTER ». */
@@ -24,7 +26,7 @@ const showLabels = process.env.NODE_ENV === "development";
  * Les deux occupent exactement la même boîte, donc remplacer l'un par l'autre
  * dans `content/landing.ts` ne bouge aucune mise en page.
  */
-export function Media({ media, className, sizes = "100vw", priority }: MediaProps) {
+export function Media({ media, className, sizes = "100vw", priority, drift }: MediaProps) {
   if (media.kind === "image") {
     return (
       <Image
@@ -41,7 +43,7 @@ export function Media({ media, className, sizes = "100vw", priority }: MediaProp
   return (
     <div
       aria-hidden
-      className={cn("absolute inset-0", className)}
+      className={cn("absolute inset-0", drift && "drift", className)}
       style={{ backgroundImage: stripePattern(media) }}
     >
       {showLabels && media.label ? (

@@ -20,7 +20,13 @@ export type Link = { label: string; href: string };
 /** Titre en deux morceaux, la partie `accent` s'affiche en orange. */
 export type SplitHeading = { before?: string; accent: string; after?: string };
 
-export type Benefit = { text: string; media: MediaSource; offset: boolean };
+/** Maquette produit animée, rendue par `components/scenes/scene.tsx`. */
+export type SceneKey = "create" | "share" | "pay" | "ticket";
+
+/** Visuel d'un bénéfice : une scène animée tant qu'il n'y a pas de capture réelle. */
+export type BenefitVisual = MediaSource | { kind: "scene"; scene: SceneKey };
+
+export type Benefit = { text: string; visual: BenefitVisual; offset: boolean };
 
 export type Universe = {
   name: string;
@@ -134,6 +140,8 @@ export const mirror = {
   ],
   checklist: ["ARTISTES", "LIEU", "COMMUNICATION", "PARTENAIRES", "PUBLIC"],
   checklistAccent: "BILLETTERIE",
+  /** Apparaît à côté de BILLETTERIE quand elle est rayée de la liste. */
+  checklistTag: "ON S’EN OCCUPE",
 };
 
 /* -------------------------------------------------------------------------
@@ -146,56 +154,66 @@ export const benefitsHeading: SplitHeading = {
   after: " vous aide à le remplir.",
 };
 
+/*
+ * Pour remplacer une scène par une vraie capture :
+ * `visual: { kind: "image", src: "/images/capture-creation.webp", alt: "…" }`.
+ */
 export const benefits: Benefit[] = [
   {
     text: "Votre événement en ligne en quelques minutes. Titre, date, lieu, catégories de billets et tarifs.",
     offset: false,
-    media: {
-      kind: "placeholder",
-      label: "CAPTURE — CRÉATION D’ÉVÉNEMENT",
-      hue: 210,
-      sat: 35,
-      light: 16,
-      angle: 12,
-    },
+    visual: { kind: "scene", scene: "create" },
   },
   {
     text: "Un lien unique à partager partout. WhatsApp, Instagram, vos affiches, vos stories.",
     offset: true,
-    media: {
-      kind: "placeholder",
-      label: "CAPTURE — LIEN DE VENTE",
-      hue: 20,
-      sat: 35,
-      light: 16,
-      angle: -8,
-    },
+    visual: { kind: "scene", scene: "share" },
   },
   {
     text: "Le paiement que votre public utilise déjà. Mobile Money, sans compte à créer, sans carte bancaire.",
     offset: false,
-    media: {
-      kind: "placeholder",
-      label: "CAPTURE — PAIEMENT MOBILE MONEY",
-      hue: 25,
-      sat: 35,
-      light: 16,
-      angle: 20,
-    },
+    visual: { kind: "scene", scene: "pay" },
   },
   {
     text: "Un billet QR par acheteur. Émis automatiquement, récupérable par code e-mail à tout moment.",
     offset: true,
-    media: {
-      kind: "placeholder",
-      label: "CAPTURE — BILLET QR",
-      hue: 340,
-      sat: 35,
-      light: 16,
-      angle: -15,
-    },
+    visual: { kind: "scene", scene: "ticket" },
   },
 ];
+
+/* -------------------------------------------------------------------------
+ * Démo produit — un événement fictif, réutilisé par les scènes animées et
+ * par le billet de « Comment ça marche ». Étiqueté « DÉMO » à l'écran.
+ * ---------------------------------------------------------------------- */
+
+export const demo = {
+  tag: "DÉMO",
+  brand: siteConfig.name,
+  event: "Sunset Live Cotonou",
+  date: "Sam. 14 mars · 20 h",
+  venue: "Plage de Fidjrossè, Cotonou",
+  tickets: [
+    { name: "Standard", amount: "5 000" },
+    { name: "VIP", amount: "15 000" },
+  ],
+  currency: "F CFA",
+  link: "tike229.com/sunset-live",
+  number: "N° 0231",
+  paid: "Payé · Mobile Money",
+  validated: "Validé",
+  publish: "Publier l’événement",
+  published: "En ligne ✓",
+  copy: "Copier",
+  copied: "Copié ✓",
+  shared: "Envoyé ✓",
+  destinations: ["WhatsApp", "Instagram", "Affiche & stories"],
+  salesTitle: "Ventes · Sunset Live",
+  notifications: [
+    { title: "Paiement reçu · 5 000 F CFA", meta: "Standard · Mobile Money · 20:41", accent: false },
+    { title: "Paiement reçu · 15 000 F CFA", meta: "VIP · Mobile Money · 20:42", accent: false },
+    { title: "2 billets QR envoyés", meta: "Récupérables par code e-mail", accent: true },
+  ],
+};
 
 /* -------------------------------------------------------------------------
  * 05 — Univers
@@ -225,6 +243,20 @@ export const universes: Universe[] = universeSeeds.map(({ name, meta, hue, span 
     angle: 25,
   },
 }));
+
+/* -------------------------------------------------------------------------
+ * Bandeau défilant — sous le hero, en attendant la bande d'affiches réelles
+ * ---------------------------------------------------------------------- */
+
+export const ticker: { items: { text: string; accent?: boolean }[] } = {
+  items: [
+    ...universes.map((universe) => ({ text: universe.name })),
+    { text: "Tous les événements du Bénin", accent: true },
+    { text: "Mobile Money" },
+    { text: "Billet QR" },
+    { text: "7 % par billet vendu", accent: true },
+  ],
+};
 
 /* -------------------------------------------------------------------------
  * 06 — Comment ça marche

@@ -1,0 +1,340 @@
+/*
+ * Tout ce qui bouge de lui-même. Chaque animation est conçue pour que l'état
+ * « naturel » de l'élément (sans animation : navigateur ancien, ou
+ * prefers-reduced-motion qui met `animation: none`) soit l'état final,
+ * complet et lisible.
+ */
+
+/* -------------------------------------------------------------------------
+ * Perforation qui défile — le bord pointillé du billet prend vie.
+ * ---------------------------------------------------------------------- */
+
+/* L'élément doit être positionné (relative ou absolute). */
+.perforation {
+  --ant: rgba(247, 244, 241, 0.35);
+}
+.perforation::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--ant) 50%, transparent 50%) 0 0 / 14px 2px repeat-x,
+    linear-gradient(90deg, var(--ant) 50%, transparent 50%) 0 100% / 14px 2px repeat-x,
+    linear-gradient(180deg, var(--ant) 50%, transparent 50%) 0 0 / 2px 14px repeat-y,
+    linear-gradient(180deg, var(--ant) 50%, transparent 50%) 100% 0 / 2px 14px repeat-y;
+  animation: ants 1.8s linear infinite;
+}
+@keyframes ants {
+  to {
+    background-position:
+      14px 0,
+      -14px 100%,
+      0 -14px,
+      100% 14px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * Hero : zoom lent sur la photo, parallaxe des vignettes au défilement.
+ * ---------------------------------------------------------------------- */
+
+.kenburns {
+  transform-origin: 55% 45%;
+  animation: kenburns 26s ease-in-out infinite alternate;
+}
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .parallax {
+    animation: parallax linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 100vh;
+  }
+  @keyframes parallax {
+    to {
+      transform: translateY(var(--parallax, -60px));
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * Bandeau défilant.
+ * ---------------------------------------------------------------------- */
+
+.ticker-track {
+  animation: ticker 48s linear infinite;
+}
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * Miroir : la liste s'allume ligne par ligne au défilement, puis
+ * BILLETTERIE est rayée — c'est celle qu'on retire de la liste.
+ * ---------------------------------------------------------------------- */
+
+@supports (animation-timeline: view()) {
+  .mirror {
+    view-timeline-name: --mirror;
+  }
+  .mirror-item {
+    color: var(--color-muted);
+    animation: mirror-light linear both;
+    animation-timeline: --mirror;
+    animation-range-start: entry calc(12% + var(--i) * 9%);
+    animation-range-end: entry calc(22% + var(--i) * 9%);
+  }
+  .mirror-strike::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 50%;
+    block-size: 2px;
+    inline-size: 0;
+    background: currentColor;
+    animation: mirror-strike linear both;
+    animation-timeline: --mirror;
+    animation-range: entry 68% entry 82%;
+  }
+  .mirror-tag {
+    opacity: 0;
+    animation: mirror-tag linear both;
+    animation-timeline: --mirror;
+    animation-range: entry 80% entry 92%;
+  }
+}
+@keyframes mirror-light {
+  to {
+    color: var(--color-bone);
+  }
+}
+@keyframes mirror-strike {
+  to {
+    inline-size: 100%;
+  }
+}
+@keyframes mirror-tag {
+  to {
+    opacity: 1;
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * Scènes produit (Bénéfices) — boucle de 10 s.
+ * ---------------------------------------------------------------------- */
+
+.scene {
+  --cycle: 10s;
+}
+
+/* 1. Le formulaire se remplit : largeur en `ch`, pas à pas (steps). */
+.sc-type {
+  animation-duration: var(--cycle);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+.sc-type-1 { animation-name: sc-type-1; }
+.sc-type-2 { animation-name: sc-type-2; }
+.sc-type-3 { animation-name: sc-type-3; }
+.sc-type-4 { animation-name: sc-type-4; }
+@keyframes sc-type-1 { 0%, 4% { width: 0; } 18%, 91% { width: var(--w); } 94%, 100% { width: 0; } }
+@keyframes sc-type-2 { 0%, 21% { width: 0; } 35%, 91% { width: var(--w); } 94%, 100% { width: 0; } }
+@keyframes sc-type-3 { 0%, 38% { width: 0; } 52%, 91% { width: var(--w); } 94%, 100% { width: 0; } }
+@keyframes sc-type-4 { 0%, 55% { width: 0; } 69%, 91% { width: var(--w); } 94%, 100% { width: 0; } }
+
+.sc-press {
+  animation: sc-press var(--cycle) ease-in-out infinite;
+}
+@keyframes sc-press {
+  0%, 73% { background-color: transparent; color: var(--color-bone); transform: none; }
+  75% { transform: scale(0.97); }
+  77%, 91% { background-color: var(--color-accent); color: var(--color-ink); transform: none; }
+  94%, 100% { background-color: transparent; color: var(--color-bone); }
+}
+.sc-label-a { animation: sc-label-a var(--cycle) linear infinite; }
+.sc-label-b { animation: sc-label-b var(--cycle) linear infinite; opacity: 0; }
+@keyframes sc-label-a { 0%, 76% { opacity: 1; } 78%, 92% { opacity: 0; } 94%, 100% { opacity: 1; } }
+@keyframes sc-label-b { 0%, 76% { opacity: 0; } 78%, 92% { opacity: 1; } 94%, 100% { opacity: 0; } }
+
+/* 2. Le lien se copie puis part vers chaque destination. */
+.sc-copy { animation: sc-copy var(--cycle) ease-in-out infinite; }
+@keyframes sc-copy {
+  0%, 7% { background-color: transparent; color: var(--color-accent); transform: none; }
+  9% { transform: scale(0.95); }
+  11%, 91% { background-color: var(--color-accent); color: var(--color-ink); transform: none; }
+  94%, 100% { background-color: transparent; color: var(--color-accent); }
+}
+.sc-copy-a { animation: sc-copy-a var(--cycle) linear infinite; }
+.sc-copy-b { animation: sc-copy-b var(--cycle) linear infinite; opacity: 0; }
+@keyframes sc-copy-a { 0%, 10% { opacity: 1; } 12%, 92% { opacity: 0; } 94%, 100% { opacity: 1; } }
+@keyframes sc-copy-b { 0%, 10% { opacity: 0; } 12%, 92% { opacity: 1; } 94%, 100% { opacity: 0; } }
+
+.sc-dest {
+  animation-duration: var(--cycle);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+}
+.sc-dest-1 { animation-name: sc-dest-1; }
+.sc-dest-2 { animation-name: sc-dest-2; }
+.sc-dest-3 { animation-name: sc-dest-3; }
+@keyframes sc-dest-1 { 0%, 22% { opacity: 0; transform: translateX(-10px); } 30%, 91% { opacity: 1; transform: none; } 94%, 100% { opacity: 0; } }
+@keyframes sc-dest-2 { 0%, 38% { opacity: 0; transform: translateX(-10px); } 46%, 91% { opacity: 1; transform: none; } 94%, 100% { opacity: 0; } }
+@keyframes sc-dest-3 { 0%, 54% { opacity: 0; transform: translateX(-10px); } 62%, 91% { opacity: 1; transform: none; } 94%, 100% { opacity: 0; } }
+
+/* 3. Les paiements tombent sur le téléphone. */
+.sc-note {
+  animation-duration: var(--cycle);
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sc-note-1 { animation-name: sc-note-1; }
+.sc-note-2 { animation-name: sc-note-2; }
+.sc-note-3 { animation-name: sc-note-3; }
+@keyframes sc-note-1 { 0%, 10% { opacity: 0; transform: translateY(-10px); } 18%, 91% { opacity: 1; transform: none; } 94%, 100% { opacity: 0; } }
+@keyframes sc-note-2 { 0%, 38% { opacity: 0; transform: translateY(-10px); } 46%, 91% { opacity: 1; transform: none; } 94%, 100% { opacity: 0; } }
+@keyframes sc-note-3 { 0%, 66% { opacity: 0; transform: translateY(-10px); } 74%, 91% { opacity: 1; transform: none; } 94%, 100% { opacity: 0; } }
+
+/* 4. Le billet se fait scanner, puis validé. */
+.sc-scan {
+  opacity: 0;
+  animation: sc-scan var(--cycle) linear infinite;
+}
+@keyframes sc-scan {
+  0%, 28% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 1; }
+  54% { opacity: 1; transform: translateY(var(--scan-h, 60px)); }
+  56%, 100% { opacity: 0; transform: translateY(var(--scan-h, 60px)); }
+}
+.sc-stamp {
+  opacity: 0;
+  animation: sc-stamp var(--cycle) cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+@keyframes sc-stamp {
+  0%, 56% { opacity: 0; transform: scale(1.5); }
+  62%, 91% { opacity: 1; transform: scale(1); }
+  94%, 100% { opacity: 0; }
+}
+
+/* -------------------------------------------------------------------------
+ * Comment ça marche : le billet se construit en quatre temps — boucle 12 s.
+ * ---------------------------------------------------------------------- */
+
+.ticket-build {
+  --tb: 12s;
+}
+.tb-progress {
+  transform-origin: top;
+  animation: tb-progress var(--tb) linear infinite;
+}
+@keyframes tb-progress {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.tb-step,
+.tb-dot,
+.tb-layer,
+.tb-scan,
+.tb-stamp {
+  animation-duration: var(--tb);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.tb-step-1 { animation-name: tb-step-1; }
+.tb-step-2 { animation-name: tb-step-2; }
+.tb-step-3 { animation-name: tb-step-3; }
+.tb-step-4 { animation-name: tb-step-4; }
+@keyframes tb-step-1 { 0%, 24% { opacity: 1; } 27%, 100% { opacity: 0.4; } }
+@keyframes tb-step-2 { 0%, 23% { opacity: 0.4; } 26%, 49% { opacity: 1; } 52%, 100% { opacity: 0.4; } }
+@keyframes tb-step-3 { 0%, 48% { opacity: 0.4; } 51%, 74% { opacity: 1; } 77%, 100% { opacity: 0.4; } }
+@keyframes tb-step-4 { 0%, 73% { opacity: 0.4; } 76%, 100% { opacity: 1; } }
+
+.tb-dot-1 { animation-name: tb-dot-1; }
+.tb-dot-2 { animation-name: tb-dot-2; }
+.tb-dot-3 { animation-name: tb-dot-3; }
+.tb-dot-4 { animation-name: tb-dot-4; }
+@keyframes tb-dot-1 { 0%, 24% { background-color: var(--color-accent); } 27%, 100% { background-color: var(--color-ink); } }
+@keyframes tb-dot-2 { 0%, 23% { background-color: var(--color-ink); } 26%, 49% { background-color: var(--color-accent); } 52%, 100% { background-color: var(--color-ink); } }
+@keyframes tb-dot-3 { 0%, 48% { background-color: var(--color-ink); } 51%, 74% { background-color: var(--color-accent); } 77%, 100% { background-color: var(--color-ink); } }
+@keyframes tb-dot-4 { 0%, 73% { background-color: var(--color-ink); } 76%, 100% { background-color: var(--color-accent); } }
+
+.tb-layer { animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+.tb-layer-1 { animation-name: tb-layer-1; }
+.tb-layer-2 { animation-name: tb-layer-2; }
+.tb-layer-3 { animation-name: tb-layer-3; }
+.tb-layer-4 { animation-name: tb-layer-4; }
+@keyframes tb-layer-1 { 0%, 3% { opacity: 0; transform: translateY(8px); } 9%, 97% { opacity: 1; transform: none; } 99.5%, 100% { opacity: 0; } }
+@keyframes tb-layer-2 { 0%, 28% { opacity: 0; transform: translateY(8px); } 34%, 97% { opacity: 1; transform: none; } 99.5%, 100% { opacity: 0; } }
+@keyframes tb-layer-3 { 0%, 53% { opacity: 0; transform: scale(1.4); } 58%, 97% { opacity: 1; transform: none; } 99.5%, 100% { opacity: 0; } }
+@keyframes tb-layer-4 { 0%, 78% { opacity: 0; transform: translateY(8px); } 83%, 97% { opacity: 1; transform: none; } 99.5%, 100% { opacity: 0; } }
+
+.tb-scan { opacity: 0; animation-name: tb-scan; }
+@keyframes tb-scan {
+  0%, 84% { opacity: 0; transform: translateY(0); }
+  85% { opacity: 1; }
+  92% { opacity: 1; transform: translateY(var(--scan-h, 100px)); }
+  93%, 100% { opacity: 0; transform: translateY(var(--scan-h, 100px)); }
+}
+.tb-stamp { opacity: 0; animation-name: tb-stamp; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes tb-stamp {
+  0%, 92% { opacity: 0; transform: scale(1.5); }
+  95%, 98.5% { opacity: 1; transform: scale(1); }
+  99.5%, 100% { opacity: 0; }
+}
+
+/* -------------------------------------------------------------------------
+ * Appel final : le halo respire, les points QR se font scanner, le bouton
+ * pulse doucement.
+ * ---------------------------------------------------------------------- */
+
+.breathe {
+  animation: breathe 7s ease-in-out infinite alternate;
+}
+@keyframes breathe {
+  from { opacity: 0.55; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+.scan-loop {
+  opacity: 0;
+  animation: scan-loop 3.2s ease-in-out infinite;
+}
+@keyframes scan-loop {
+  0% { opacity: 0; transform: translateY(0); }
+  10% { opacity: 1; }
+  80% { opacity: 1; transform: translateY(var(--scan-h, 120px)); }
+  90%, 100% { opacity: 0; transform: translateY(var(--scan-h, 120px)); }
+}
+.pulse-glow {
+  animation: pulse-glow 2.6s ease-in-out infinite alternate;
+}
+@keyframes pulse-glow {
+  from { box-shadow: 0 0 0 rgba(232, 149, 54, 0); }
+  to { box-shadow: 0 0 40px rgba(232, 149, 54, 0.45); }
+}
+
+/* -------------------------------------------------------------------------
+ * Placeholders plein écran : les rayures dérivent lentement.
+ * ---------------------------------------------------------------------- */
+
+.drift {
+  animation: drift 50s linear infinite;
+}
+@keyframes drift {
+  to {
+    background-position: 400px 0;
+  }
+}

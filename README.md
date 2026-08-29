@@ -23,6 +23,7 @@ Le workflow GitHub Actions (`.github/workflows/ci.yml`) exécute `lint` puis
 src/
   app/
     globals.css          tokens de design, keyframes, styles de base, .reveal, .legal-prose
+  styles/motion.css      tout ce qui bouge de lui-même (scènes, billet, hero, bandeau, CTA)
     layout.tsx           polices, métadonnées SEO, viewport, JSON-LD, analytics
     page.tsx             assemblage des sections (selon les drapeaux de site.ts)
     not-found.tsx        page 404 (→ out/404.html)
@@ -35,8 +36,9 @@ src/
     site.ts              ← RÉGLAGES : URL, drapeaux de sections, jeton analytics, nav
     landing.ts           ← CONTENU : tous les textes et visuels des sections
   components/
-    sections/            une section = un fichier
-    ui/                  Button, Heading, Kicker, Media, QrDots
+    sections/            une section = un fichier (dont ticker.tsx, le bandeau défilant)
+    scenes/              les quatre maquettes produit animées de « Bénéfices »
+    ui/                  Button, Heading, Kicker, Media, QrDots, QrPattern, Ticket
     site-nav.tsx         barre fixe, menu mobile, devient opaque au scroll
     site-footer.tsx      pied de page (liens légaux quand ils sont publiés)
     mobile-cta-bar.tsx   rappel d'action mobile après le hero
@@ -78,6 +80,22 @@ media: { kind: "image", src: "/images/concerts.jpg", alt: "Concert à Cotonou" }
 Les deux variantes occupent la même boîte : la mise en page ne bouge pas. La
 légende du placeholder (`label`) n'est affichée qu'en développement (`next
 dev`), jamais dans le build de production.
+
+### Scènes produit et billet de démonstration
+
+Les quatre visuels de « Bénéfices » sont des maquettes animées en CSS
+(`components/scenes/scene.tsx`) : formulaire qui se remplit, lien qui se copie
+et se partage, paiements qui arrivent, billet scanné. Le billet de « Comment ça
+marche » (`components/ui/ticket.tsx`) se construit en quatre temps, en rythme
+avec la liste.
+
+Tout ce qu'ils affichent vient de `demo` dans `landing.ts` : un événement
+fictif (« Sunset Live Cotonou »), étiqueté « DÉMO » à l'écran. Pour remplacer
+une scène par une vraie capture, changer le `visual` du bénéfice :
+
+```ts
+visual: { kind: "image", src: "/images/capture-creation.webp", alt: "…" }
+```
 
 ### Tarifs
 
@@ -133,8 +151,15 @@ défaut.
 
 La classe `reveal` fait apparaître un élément à l'entrée dans l'écran, en CSS
 pur (`animation-timeline: view()`) ; les navigateurs sans cette fonctionnalité
-affichent le contenu tel quel. Toutes les animations sont désactivées sous
-`prefers-reduced-motion: reduce`.
+affichent le contenu tel quel.
+
+Tout ce qui bouge de lui-même est dans `src/styles/motion.css` : perforation
+qui défile et zoom lent du hero, parallaxe des vignettes, bandeau défilant,
+liste du Miroir qui s'allume au défilement, scènes produit (boucle 10 s),
+billet qui se construit (boucle 12 s), halo et scan du CTA final, rayures qui
+dérivent. Chaque animation est écrite pour que l'état sans animation soit
+l'état final, complet et lisible : toutes sont désactivées sous
+`prefers-reduced-motion: reduce`, et aucune n'a besoin de JavaScript.
 
 Les hauteurs plein écran utilisent `dvh` pour ne pas sauter quand la barre
 d'adresse mobile se replie.

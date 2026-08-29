@@ -34,6 +34,7 @@ export const siteConfig = {
 };
 
 export type SectionKey =
+  | "ticker"
   | "marquee"
   | "mirror"
   | "benefits"
@@ -50,6 +51,7 @@ export type SectionKey =
  * n'est pas encore là reste masquée plutôt que d'afficher des placeholders.
  */
 export const sections: Record<SectionKey, boolean> = {
+  ticker: true,
   marquee: false,
   mirror: true,
   benefits: true,

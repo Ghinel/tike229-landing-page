@@ -1,6 +1,7 @@
 import { benefits, benefitsHeading } from "@/content/landing";
 import { cn } from "@/lib/cn";
 
+import { Scene } from "../scenes/scene";
 import { Heading } from "../ui/heading";
 import { Media } from "../ui/media";
 
@@ -38,7 +39,11 @@ export function Benefits() {
           <div key={benefit.text} className={cn("reveal", benefit.offset && "wide:mt-10")}>
             <div className="relative mb-5 aspect-4/3 w-full rounded-md border-2 border-dashed border-accent/40">
               <div className="absolute inset-0 overflow-hidden rounded-md">
-                <Media media={benefit.media} sizes="(min-width: 900px) 25vw, 100vw" />
+                {benefit.visual.kind === "scene" ? (
+                  <Scene scene={benefit.visual.scene} />
+                ) : (
+                  <Media media={benefit.visual} sizes="(min-width: 900px) 25vw, 100vw" />
+                )}
               </div>
               <Notch position="top" />
               <Notch position="bottom" />
