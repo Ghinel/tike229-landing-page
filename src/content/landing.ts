@@ -1,5 +1,7 @@
 import type { Stripe } from "@/lib/stripe";
 
+import { primaryCta, siteConfig } from "./site";
+
 /* -------------------------------------------------------------------------
  * Types
  * ---------------------------------------------------------------------- */
@@ -22,6 +24,7 @@ export type Benefit = { text: string; media: MediaSource; offset: boolean };
 
 export type Universe = {
   name: string;
+  /** Sous-titre mono sous le nom : quelques formats typiques de l'univers. */
   meta: string;
   span: "rows" | "cols" | null;
   media: MediaSource;
@@ -37,9 +40,11 @@ export type PricingPlan = {
   tagline: string | null;
   features: string[];
   cta: string;
-  /** `draft` : contenu encore à définir, rendu en mono/gris. */
+  /** Seules les formules `live` sont rendues ; `draft` : contenu encore à définir. */
   status: "live" | "draft";
 };
+
+export type FaqItem = { q: string; a: string };
 
 export type ProofPoster = { caption: string; media: MediaSource };
 
@@ -51,36 +56,6 @@ export type HeroAside = {
   className: string;
   /** Décalage d'animation à l'apparition, en millisecondes. */
   delay: number;
-};
-
-/* -------------------------------------------------------------------------
- * Réglages
- * ---------------------------------------------------------------------- */
-
-export const siteConfig = {
-  name: "TIKÉ 229",
-  publisher: "GHINEL Labs",
-  email: "support@ghinel.com",
-  url: "https://tike229.com",
-  /** Destination de tous les boutons d'action : l'application TIKÉ 229. */
-  appUrl: "https://tike229.ghinel.com/",
-  description:
-    "TIKÉ 229 met votre billetterie en ligne et réunit les événements du Bénin au même endroit. Paiement Mobile Money, billet QR automatique, 7 % par billet vendu.",
-  /** La barre de navigation reste opaque même en haut de page. */
-  navAlwaysOpaque: false,
-  /** Barre d'appel à l'action fixe en bas d'écran sur mobile. */
-  showMobileCtaBar: true,
-};
-
-export const primaryCta = "Créer ma billetterie";
-
-export const nav: { links: Link[]; cta: string } = {
-  links: [
-    { label: "Univers", href: "#univers" },
-    { label: "Comment ça marche", href: "#comment" },
-    { label: "Tarifs", href: "#tarifs" },
-  ],
-  cta: primaryCta,
 };
 
 /* -------------------------------------------------------------------------
@@ -97,17 +72,17 @@ export const hero: {
   asides: HeroAside[];
 } = {
   lines: [
-    { text: "Faites vivre l'événement.", accent: false },
-    { text: "On s'occupe des billets.", accent: true },
+    { text: "Faites vivre l’événement.", accent: false },
+    { text: "On s’occupe des billets.", accent: true },
   ],
   body: "TIKÉ 229 met votre billetterie en ligne et réunit les événements du Bénin au même endroit. Vos billets se vendent en Mobile Money, votre public reçoit son QR immédiatement.",
   cta: primaryCta,
-  secondary: { label: "Voir la billetterie →", href: "#univers" },
-  kicker: "EN LIGNE · MOBILE MONEY · BILLET QR · 7 % PAR BILLET",
+  secondary: { label: "Comment ça marche →", href: "#comment" },
+  kicker: "EN LIGNE · MOBILE MONEY · BILLET QR · 7 % PAR BILLET",
   main: {
     kind: "image",
     src: "/images/hero-foule.webp",
-    alt: "Foule en train de danser face à la scène lors d'un festival de plage au Bénin",
+    alt: "Foule en train de danser face à la scène lors d’un festival de plage au Bénin",
   },
   asides: [
     {
@@ -152,10 +127,10 @@ export const marquee: { kicker: string; posters: MediaSource[] } = {
  * ---------------------------------------------------------------------- */
 
 export const mirror = {
-  title: "Organiser un événement, c'est déjà assez de travail.",
+  title: "Organiser un événement, c’est déjà assez de travail.",
   paragraphs: [
-    "Les paiements arrivent sur trois numéros Mobile Money différents. Les confirmations se perdent dans une conversation WhatsApp à 400 messages. Le jour J, quelqu'un coche des noms sur une feuille imprimée pendant que la file s'allonge. Et deux billets identiques se présentent à l'entrée.",
-    "Vous ne saurez ce que l'événement a réellement fait que le lendemain.",
+    "Les paiements arrivent sur trois numéros Mobile Money différents. Les confirmations se perdent dans une conversation WhatsApp à 400 messages. Le jour J, quelqu’un coche des noms sur une feuille imprimée pendant que la file s’allonge. Et deux billets identiques se présentent à l’entrée.",
+    "Vous ne saurez ce que l’événement a réellement fait que le lendemain.",
   ],
   checklist: ["ARTISTES", "LIEU", "COMMUNICATION", "PARTENAIRES", "PUBLIC"],
   checklistAccent: "BILLETTERIE",
@@ -166,7 +141,7 @@ export const mirror = {
  * ---------------------------------------------------------------------- */
 
 export const benefitsHeading: SplitHeading = {
-  before: "Vous créez l'événement. ",
+  before: "Vous créez l’événement. ",
   accent: "TIKÉ 229",
   after: " vous aide à le remplir.",
 };
@@ -177,7 +152,7 @@ export const benefits: Benefit[] = [
     offset: false,
     media: {
       kind: "placeholder",
-      label: "CAPTURE — CRÉATION D'ÉVÉNEMENT",
+      label: "CAPTURE — CRÉATION D’ÉVÉNEMENT",
       hue: 210,
       sat: 35,
       light: 16,
@@ -228,18 +203,18 @@ export const benefits: Benefit[] = [
 
 export const universesHeading = "Quel que soit votre univers, le billet est le même.";
 
-const universeSeeds: { name: string; hue: number; span: "rows" | "cols" | null }[] = [
-  { name: "Concerts", hue: 20, span: "rows" },
-  { name: "Chills", hue: 35, span: null },
-  { name: "Humour", hue: 0, span: null },
-  { name: "Culture", hue: 280, span: "cols" },
-  { name: "Festivals", hue: 340, span: null },
-  { name: "Shows", hue: 15, span: null },
+const universeSeeds: { name: string; meta: string; hue: number; span: "rows" | "cols" | null }[] = [
+  { name: "Concerts", meta: "LIVE · TOURNÉES · SCÈNES OUVERTES", hue: 20, span: "rows" },
+  { name: "Chills", meta: "AFTERWORKS · ROOFTOPS · PLAGES", hue: 35, span: null },
+  { name: "Humour", meta: "STAND-UP · ONE-MAN-SHOWS · PLATEAUX", hue: 0, span: null },
+  { name: "Culture", meta: "EXPOSITIONS · THÉÂTRE · CONFÉRENCES", hue: 280, span: "cols" },
+  { name: "Festivals", meta: "PLUSIEURS JOURS · PLUSIEURS SCÈNES", hue: 340, span: null },
+  { name: "Shows", meta: "DÉFILÉS · GALAS · SPECTACLES", hue: 15, span: null },
 ];
 
-export const universes: Universe[] = universeSeeds.map(({ name, hue, span }) => ({
+export const universes: Universe[] = universeSeeds.map(({ name, meta, hue, span }) => ({
   name,
-  meta: "ÉVÉNEMENTS RÉELS — À COMPLÉTER",
+  meta,
   span,
   media: {
     kind: "placeholder",
@@ -270,7 +245,7 @@ export const steps: Step[] = [
 
 export const pricing: { heading: string; note: string; plans: PricingPlan[] } = {
   heading: "Un prix clair. Vous ne payez que si vous vendez.",
-  note: "AUCUN FRAIS D'ENTRÉE · AUCUN ABONNEMENT SUR LA FORMULE ESSENTIEL",
+  note: "AUCUN FRAIS D’ENTRÉE · AUCUN ABONNEMENT SUR LA FORMULE ESSENTIEL",
   plans: [
     {
       index: "01",
@@ -312,7 +287,41 @@ export const pricing: { heading: string; note: string; plans: PricingPlan[] } = 
 };
 
 /* -------------------------------------------------------------------------
- * 08 — Preuve
+ * 08 — Questions
+ *
+ * Chaque réponse reformule une promesse déjà faite plus haut dans la page ;
+ * rien ici n'engage TIKÉ 229 au-delà de ce que le reste du site affirme.
+ * ---------------------------------------------------------------------- */
+
+export const faq: { kicker: string; heading: string; items: FaqItem[] } = {
+  kicker: "QUESTIONS",
+  heading: "Avant de vous lancer.",
+  items: [
+    {
+      q: "Combien ça coûte ?",
+      a: "7 % par billet vendu, prélevés sur chaque vente. Aucun frais d’entrée, aucun abonnement sur la formule Essentiel : si vous ne vendez rien, vous ne payez rien.",
+    },
+    {
+      q: "Comment mon public paie-t-il ?",
+      a: "En Mobile Money, directement depuis votre lien de vente. Pas de compte à créer, pas de carte bancaire.",
+    },
+    {
+      q: "Comment l’acheteur reçoit-il son billet ?",
+      a: "Un billet QR est émis automatiquement dès le paiement, un par acheteur. Il reste récupérable à tout moment par code e-mail.",
+    },
+    {
+      q: "Combien de temps pour mettre un événement en ligne ?",
+      a: "Quelques minutes : titre, date, lieu, catégories de billets et tarifs. Vous obtenez ensuite un lien unique à partager sur WhatsApp, Instagram, vos affiches et vos stories.",
+    },
+    {
+      q: "Quels événements peuvent passer par TIKÉ 229 ?",
+      a: "Concerts, chills, humour, culture, festivals, shows : quel que soit l’univers, le billet est le même.",
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------
+ * 09 — Preuve
  * ---------------------------------------------------------------------- */
 
 export const proof: { heading: string; posters: ProofPoster[]; testimonials: Testimonial[] } = {
@@ -343,7 +352,7 @@ export const proof: { heading: string; posters: ProofPoster[]; testimonials: Tes
 };
 
 /* -------------------------------------------------------------------------
- * 09 — Moment émotionnel
+ * 10 — Moment émotionnel
  * ---------------------------------------------------------------------- */
 
 export const emotion: { quote: string; sub: string; media: MediaSource } = {
@@ -360,16 +369,16 @@ export const emotion: { quote: string; sub: string; media: MediaSource } = {
 };
 
 /* -------------------------------------------------------------------------
- * 10 — Appel final
+ * 11 — Appel final
  * ---------------------------------------------------------------------- */
 
 export const finalCta: { heading: string; cta: string; note: string; media: MediaSource } = {
   heading: "Votre prochain événement commence ici.",
   cta: "Publier mon événement sur TIKÉ 229",
-  note: "7 % par billet vendu. Rien d'autre.",
+  note: "7 % par billet vendu. Rien d’autre.",
   media: {
     kind: "placeholder",
-    label: "PHOTO — SALLE QUI SE REMPLIT, VUE DE L'ENTRÉE",
+    label: "PHOTO — SALLE QUI SE REMPLIT, VUE DE L’ENTRÉE",
     hue: 20,
     sat: 30,
     light: 10,
@@ -378,14 +387,26 @@ export const finalCta: { heading: string; cta: string; note: string; media: Medi
 };
 
 /* -------------------------------------------------------------------------
- * 11 — Pied de page
+ * 12 — Pied de page
  * ---------------------------------------------------------------------- */
 
-export const footer: { byline: string; links: Link[] } = {
+export const footer: { byline: string; legalLinks: Link[]; contact: Link } = {
   byline: "Un produit " + siteConfig.publisher,
-  links: [
-    { label: "Conditions d'utilisation", href: "#" },
-    { label: "Politique de confidentialité", href: "#" },
-    { label: siteConfig.email, href: "mailto:" + siteConfig.email },
+  legalLinks: [
+    { label: "Conditions d’utilisation", href: "/cgu" },
+    { label: "Politique de confidentialité", href: "/confidentialite" },
+    { label: "Mentions légales", href: "/mentions-legales" },
   ],
+  contact: { label: siteConfig.email, href: "mailto:" + siteConfig.email },
+};
+
+/* -------------------------------------------------------------------------
+ * Page introuvable
+ * ---------------------------------------------------------------------- */
+
+export const notFoundPage = {
+  kicker: "ERREUR 404",
+  heading: "Ce billet ne mène nulle part.",
+  body: "La page que vous cherchez n’existe pas ou a été déplacée.",
+  back: "Retour à l’accueil",
 };

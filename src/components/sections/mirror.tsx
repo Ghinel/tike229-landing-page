@@ -7,12 +7,15 @@ export function Mirror() {
   return (
     <section className="relative flex flex-col gap-12 bg-ink px-6 py-30 wide:flex-row">
       <div className="max-w-[680px] flex-1">
-        <Heading as="p" className="mb-10">
+        <Heading as="p" className="reveal mb-10">
           {mirror.title}
         </Heading>
 
         {mirror.paragraphs.map((paragraph) => (
-          <p key={paragraph} className="mb-7 max-w-[60ch] text-[17px] leading-[1.7] last:mb-0">
+          <p
+            key={paragraph}
+            className="reveal mb-7 max-w-[60ch] text-[17px] leading-[1.7] last:mb-0"
+          >
             {paragraph}
           </p>
         ))}

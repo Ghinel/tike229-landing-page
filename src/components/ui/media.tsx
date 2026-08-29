@@ -8,9 +8,16 @@ type MediaProps = {
   media: MediaSource;
   /** Le parent doit être `relative` : le visuel se pose en `absolute inset-0`. */
   className?: string;
+  /**
+   * Sans effet tant que `images.unoptimized` est actif (pas de `srcset`),
+   * conservé pour un futur loader d'images.
+   */
   sizes?: string;
   priority?: boolean;
 };
+
+/** La légende d'un placeholder n'apparaît qu'en développement : le public ne doit jamais lire « À COMPLÉTER ». */
+const showLabels = process.env.NODE_ENV === "development";
 
 /**
  * Rend une vraie photo ou, tant qu'elle n'existe pas, un aplat rayé légendé.
@@ -37,7 +44,7 @@ export function Media({ media, className, sizes = "100vw", priority }: MediaProp
       className={cn("absolute inset-0", className)}
       style={{ backgroundImage: stripePattern(media) }}
     >
-      {media.label ? (
+      {showLabels && media.label ? (
         <span className="absolute top-2.5 left-2.5 font-mono text-[9px] text-bone/70">
           {media.label}
         </span>

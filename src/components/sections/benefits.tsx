@@ -19,13 +19,15 @@ function Notch({ position }: { position: "top" | "bottom" }) {
 
 export function Benefits() {
   return (
-    <section className="relative overflow-hidden bg-surface px-6 py-25">
+    // `overflow-clip` plutôt que `hidden` : un conteneur `overflow: hidden`
+    // deviendrait le défileur de référence des animations `.reveal`.
+    <section className="relative overflow-clip bg-surface px-6 py-25">
       <div
         aria-hidden
         className="pointer-events-none absolute -top-[20%] -left-[10%] h-[140%] w-[70%] -rotate-18 bg-[radial-gradient(ellipse_at_center,rgba(198,62,30,0.35),transparent_70%)]"
       />
 
-      <Heading size="lg" className="relative mb-16 max-w-[800px]">
+      <Heading size="lg" className="reveal relative mb-16 max-w-[800px]">
         {benefitsHeading.before}
         <span className="text-accent">{benefitsHeading.accent}</span>
         {benefitsHeading.after}
@@ -33,10 +35,10 @@ export function Benefits() {
 
       <div className="relative grid gap-10 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
         {benefits.map((benefit) => (
-          <div key={benefit.text} className={cn(benefit.offset && "wide:mt-10")}>
+          <div key={benefit.text} className={cn("reveal", benefit.offset && "wide:mt-10")}>
             <div className="relative mb-5 aspect-4/3 w-full rounded-md border-2 border-dashed border-accent/40">
               <div className="absolute inset-0 overflow-hidden rounded-md">
-                <Media media={benefit.media} sizes="(max-width: 900px) 100vw, 25vw" />
+                <Media media={benefit.media} sizes="(min-width: 900px) 25vw, 100vw" />
               </div>
               <Notch position="top" />
               <Notch position="bottom" />

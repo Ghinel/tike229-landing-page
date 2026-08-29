@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 
-import { siteConfig } from "@/content/landing";
+import { siteConfig } from "@/content/site";
 
 import "./globals.css";
 
@@ -25,10 +26,12 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const title = `${siteConfig.name} — Votre billetterie en ligne au Bénin`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Votre billetterie en ligne au Bénin`,
+    default: title,
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -36,23 +39,57 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_BJ",
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — Votre billetterie en ligne au Bénin`,
+    title,
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Votre billetterie en ligne au Bénin`,
+    title,
     description: siteConfig.description,
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  email: siteConfig.email,
+  description: siteConfig.description,
+  parentOrganization: { "@type": "Organization", name: siteConfig.publisher },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <body
-        className={`${bricolage.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
-      >
+    // Les variables de police sont posées sur <html> : `@theme` les lit sur
+    // `:root`, où elles seraient introuvables si elles étaient sur <body>.
+    <html
+      lang="fr"
+      className={`${bricolage.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="antialiased">
         {children}
+
+        <script
+          type="application/ld+json"
+          // `<` échappé pour qu'aucune valeur ne puisse fermer la balise.
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+
+        {siteConfig.cloudflareAnalyticsToken ? (
+          <Script
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: siteConfig.cloudflareAnalyticsToken })}
+            strategy="afterInteractive"
+          />
+        ) : null}
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
-import { hero, siteConfig } from "@/content/landing";
+import { hero } from "@/content/landing";
 import { cn } from "@/lib/cn";
+import { ctaHref } from "@/lib/cta";
 
 import { ButtonLink } from "../ui/button";
 import { Kicker } from "../ui/kicker";
@@ -12,11 +13,9 @@ import { QrDots } from "../ui/qr-dots";
  */
 const delay = (ms: number) => ({ animationDelay: `${ms}ms` });
 
-const lineDelays = [100, 180];
-
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen flex-col">
+    <section id="hero" className="relative flex min-h-dvh flex-col">
       <div className="relative grid min-h-[62vh] grid-cols-1 pt-20">
         <div className="animate-reveal absolute inset-0 overflow-hidden border-2 border-dashed border-bone/30">
           <Media media={hero.main} priority sizes="100vw" />
@@ -38,13 +37,15 @@ export function Hero() {
         <QrDots className="absolute top-8 right-8" />
       </div>
 
-      <div className="relative max-w-[640px] px-6 pb-24">
+      <div className="relative max-w-[720px] px-6 pb-24">
         <h1 className="mb-5 font-display text-[clamp(40px,8vw,104px)] leading-[1.02] font-extrabold tracking-[-0.03em]">
           {hero.lines.map((line, i) => (
-            <span key={line.text} className="block overflow-hidden">
+            // Rogné en vertical seulement : l'animation glisse vers le haut,
+            // mais un mot long ne doit pas perdre sa ponctuation à droite.
+            <span key={line.text} className="block overflow-y-clip">
               <span
                 className={cn("animate-line-up block", line.accent && "text-accent")}
-                style={delay(lineDelays[i])}
+                style={delay(100 + i * 80)}
               >
                 {line.text}
               </span>
@@ -57,7 +58,7 @@ export function Hero() {
         </p>
 
         <div className="animate-fade-up mb-7 flex flex-wrap items-center gap-6" style={delay(500)}>
-          <ButtonLink href={siteConfig.appUrl}>{hero.cta}</ButtonLink>
+          <ButtonLink href={ctaHref("hero")}>{hero.cta}</ButtonLink>
           <a
             href={hero.secondary.href}
             className="text-sm text-bone underline decoration-muted underline-offset-4 transition-colors duration-200 hover:decoration-accent"

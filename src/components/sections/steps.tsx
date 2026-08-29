@@ -9,11 +9,11 @@ export function Steps() {
       id="comment"
       className="relative scroll-mt-24 border-t-2 border-dashed border-bone/15 bg-ink px-6 py-25"
     >
-      <Heading className="mb-16">{stepsHeading}</Heading>
+      <Heading className="reveal mb-16">{stepsHeading}</Heading>
 
       <ol className="relative max-w-[640px] border-l-2 border-dashed border-bone/25 pl-8">
         {steps.map((step) => (
-          <li key={step.n} className="relative mb-14 last:mb-0">
+          <li key={step.n} className="reveal relative mb-14 last:mb-0">
             <span
               aria-hidden
               className="absolute top-0.5 -left-10 size-4 rounded-full border-2 border-accent bg-ink"
