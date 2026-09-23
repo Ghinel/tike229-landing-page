@@ -360,20 +360,20 @@ export const proof: { heading: string; posters: ProofPoster[]; testimonials: Tes
   heading: "Ils sont déjà passés par TIKÉ 229.",
   posters: [
     {
-      caption: "CONCERT LIVE COTONOU",
-      media: { kind: "image", src: "/images/concert.png", alt: "Concert Live" },
+      caption: "TIKÉ 229",
+      media: { kind: "image", src: "/images/WhatsApp Image 2026-09-23 at 06.12.17.jpeg", alt: "Événement TIKÉ 229" },
     },
     {
-      caption: "STAND UP COMEDY",
-      media: { kind: "image", src: "/images/Humour.png", alt: "Stand Up" },
+      caption: "TIKÉ 229",
+      media: { kind: "image", src: "/images/WhatsApp Image 2026-09-23 at 06.16.56.jpeg", alt: "Événement TIKÉ 229" },
     },
     {
-      caption: "FESTIVAL URBAIN",
-      media: { kind: "image", src: "/images/FIle%20d'attente%20soir.png", alt: "Festival" },
+      caption: "TIKÉ 229",
+      media: { kind: "image", src: "/images/WhatsApp Image 2026-09-23 at 06.17.58.jpeg", alt: "Événement TIKÉ 229" },
     },
     {
-      caption: "SOIRÉE ROOFTOP",
-      media: { kind: "image", src: "/images/chills.png", alt: "Rooftop" },
+      caption: "TIKÉ 229",
+      media: { kind: "image", src: "/images/WhatsApp Image 2026-09-23 at 06.21.25.jpeg", alt: "Événement TIKÉ 229" },
     },
   ],
   testimonials: [],
