@@ -51,15 +51,15 @@ export type SectionKey =
  * n'est pas encore là reste masquée plutôt que d'afficher des placeholders.
  */
 export const sections: Record<SectionKey, boolean> = {
-  ticker: true,
-  marquee: false,
+  ticker: false,
+  marquee: true,
   mirror: true,
   benefits: true,
   universes: true,
   steps: true,
   pricing: true,
   faq: true,
-  proof: false,
+  proof: true,
   emotion: true,
   finalCta: true,
 };

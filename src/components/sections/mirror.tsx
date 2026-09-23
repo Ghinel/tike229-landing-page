@@ -20,7 +20,7 @@ export function Mirror() {
         {mirror.paragraphs.map((paragraph) => (
           <p
             key={paragraph}
-            className="reveal mb-7 max-w-[60ch] text-[17px] leading-[1.7] last:mb-0"
+            className="reveal mb-7 max-w-[60ch] text-[17px] leading-[1.7] text-pretty last:mb-0"
           >
             {paragraph}
           </p>

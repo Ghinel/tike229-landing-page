@@ -8,7 +8,7 @@ import { QrPattern } from "../ui/qr-pattern";
 
 export function FinalCta() {
   return (
-    <section className="relative flex min-h-[90vh] flex-col justify-center overflow-clip border-2 border-dashed border-bone/30 px-6 py-20">
+    <section className="relative flex min-h-[90vh] flex-col justify-center overflow-clip border-2 border-solid border-bone/30 px-6 py-20">
       <Media media={finalCta.media} sizes="100vw" drift />
 
       <div aria-hidden className="absolute inset-0 bg-linear-to-b from-black/50 to-black/95" />

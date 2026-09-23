@@ -13,14 +13,14 @@ const spans = {
 export function Universes() {
   return (
     <section id="univers" className="relative scroll-mt-24 bg-ink px-6 pt-25 pb-15">
-      <Heading className="reveal mb-12">{universesHeading}</Heading>
+      <Heading className="reveal mb-12 text-center">{universesHeading}</Heading>
 
       <div className="grid auto-rows-[220px] grid-cols-1 gap-4 wide:[grid-template-columns:1.3fr_1fr_1fr]">
         {universes.map((universe) => (
           <article
             key={universe.name}
             className={cn(
-              "group reveal relative overflow-hidden rounded-[4px] border-2 border-dashed border-bone/30",
+              "group reveal relative overflow-hidden rounded-[4px] border-2 border-solid border-bone/30",
               universe.span && spans[universe.span],
             )}
           >

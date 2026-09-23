@@ -13,6 +13,7 @@ import { primaryCta, siteConfig } from "./site";
  */
 export type MediaSource =
   | { kind: "image"; src: string; alt: string }
+  | { kind: "video"; src: string; poster?: string }
   | ({ kind: "placeholder"; label: string } & Stripe);
 
 export type Link = { label: string; href: string };
@@ -86,30 +87,11 @@ export const hero: {
   secondary: { label: "Comment ça marche →", href: "#comment" },
   kicker: "EN LIGNE · MOBILE MONEY · BILLET QR · 7 % PAR BILLET",
   main: {
-    kind: "image",
-    src: "/images/hero-foule.webp",
-    alt: "Foule en train de danser face à la scène lors d’un festival de plage au Bénin",
+    kind: "video",
+    src: "/videos/videobckgtike.mp4",
+    poster: "/images/hero-foule.webp",
   },
-  asides: [
-    {
-      media: {
-        kind: "image",
-        src: "/images/hero-humoriste.webp",
-        alt: "Humoriste au micro sur scène devant une salle comble",
-      },
-      className: "top-[14%] right-[6%] h-[280px] w-[220px]",
-      delay: 200,
-    },
-    {
-      media: {
-        kind: "image",
-        src: "/images/hero-rooftop.webp",
-        alt: "Soirée sur un rooftop éclairé de nuit",
-      },
-      className: "right-[26%] bottom-[-40px] h-[150px] w-[180px]",
-      delay: 350,
-    },
-  ],
+  asides: [],
 };
 
 /* -------------------------------------------------------------------------
@@ -118,14 +100,16 @@ export const hero: {
 
 export const marquee: { kicker: string; posters: MediaSource[] } = {
   kicker: "TOUS LES ÉVÉNEMENTS DU BÉNIN. UN SEUL ENDROIT.",
-  posters: [10, 30, 200, 340, 20, 10, 30, 200, 340, 20].map((hue) => ({
-    kind: "placeholder",
-    label: "AFFICHE — À COMPLÉTER",
-    hue,
-    sat: 30,
-    light: 15,
-    angle: 15,
-  })),
+  posters: [
+    { kind: "image", src: "/images/concert.png", alt: "Concert" },
+    { kind: "image", src: "/images/chills.png", alt: "Soirée Chill" },
+    { kind: "image", src: "/images/Humour.png", alt: "Spectacle Humour" },
+    { kind: "image", src: "/images/Culture.png", alt: "Événement Culturel" },
+    { kind: "image", src: "/images/FIle%20d'attente%20soir.png", alt: "Festival de nuit" },
+    { kind: "image", src: "/images/R%C3%A9gie%20coulisse.png", alt: "Régie Show" },
+    { kind: "image", src: "/images/concert.png", alt: "Concert Live" },
+    { kind: "image", src: "/images/Humour.png", alt: "Comédie" },
+  ],
 };
 
 /* -------------------------------------------------------------------------
@@ -221,28 +205,44 @@ export const demo = {
 
 export const universesHeading = "Quel que soit votre univers, le billet est le même.";
 
-const universeSeeds: { name: string; meta: string; hue: number; span: "rows" | "cols" | null }[] = [
-  { name: "Concerts", meta: "LIVE · TOURNÉES · SCÈNES OUVERTES", hue: 20, span: "rows" },
-  { name: "Chills", meta: "AFTERWORKS · ROOFTOPS · PLAGES", hue: 35, span: null },
-  { name: "Humour", meta: "STAND-UP · ONE-MAN-SHOWS · PLATEAUX", hue: 0, span: null },
-  { name: "Culture", meta: "EXPOSITIONS · THÉÂTRE · CONFÉRENCES", hue: 280, span: "cols" },
-  { name: "Festivals", meta: "PLUSIEURS JOURS · PLUSIEURS SCÈNES", hue: 340, span: null },
-  { name: "Shows", meta: "DÉFILÉS · GALAS · SPECTACLES", hue: 15, span: null },
-];
-
-export const universes: Universe[] = universeSeeds.map(({ name, meta, hue, span }) => ({
-  name,
-  meta,
-  span,
-  media: {
-    kind: "placeholder",
-    label: "PHOTO — " + name.toUpperCase(),
-    hue,
-    sat: 30,
-    light: 14,
-    angle: 25,
+export const universes: Universe[] = [
+  {
+    name: "Concerts",
+    meta: "LIVE · TOURNÉES · SCÈNES OUVERTES",
+    span: "rows",
+    media: { kind: "image", src: "/images/concert.png", alt: "Scène de concert live" },
   },
-}));
+  {
+    name: "Chills",
+    meta: "AFTERWORKS · ROOFTOPS · PLAGES",
+    span: null,
+    media: { kind: "image", src: "/images/chills.png", alt: "Ambiance chill et détente" },
+  },
+  {
+    name: "Humour",
+    meta: "STAND-UP · ONE-MAN-SHOWS · PLATEAUX",
+    span: null,
+    media: { kind: "image", src: "/images/Humour.png", alt: "Scène de stand-up ou humour" },
+  },
+  {
+    name: "Culture",
+    meta: "EXPOSITIONS · THÉÂTRE · CONFÉRENCES",
+    span: "cols",
+    media: { kind: "image", src: "/images/Culture.png", alt: "Événement culturel, théâtre ou expo" },
+  },
+  {
+    name: "Festivals",
+    meta: "PLUSIEURS JOURS · PLUSIEURS SCÈNES",
+    span: null,
+    media: { kind: "image", src: "/images/FIle%20d'attente%20soir.png", alt: "File d'attente de nuit pour un festival" },
+  },
+  {
+    name: "Shows",
+    meta: "DÉFILÉS · GALAS · SPECTACLES",
+    span: null,
+    media: { kind: "image", src: "/images/R%C3%A9gie%20coulisse.png", alt: "Régie technique en coulisses d'un show" },
+  },
+];
 
 /* -------------------------------------------------------------------------
  * Bandeau défilant — sous le hero, en attendant la bande d'affiches réelles
@@ -358,29 +358,25 @@ export const faq: { kicker: string; heading: string; items: FaqItem[] } = {
 
 export const proof: { heading: string; posters: ProofPoster[]; testimonials: Testimonial[] } = {
   heading: "Ils sont déjà passés par TIKÉ 229.",
-  posters: [10, 30, 200, 340].map((hue) => ({
-    caption: "ÉVÉNEMENT RÉEL — À COMPLÉTER",
-    media: {
-      kind: "placeholder",
-      label: "AFFICHE ÉVÉNEMENT",
-      hue,
-      sat: 30,
-      light: 16,
-      angle: 20,
+  posters: [
+    {
+      caption: "CONCERT LIVE COTONOU",
+      media: { kind: "image", src: "/images/concert.png", alt: "Concert Live" },
     },
-  })),
-  testimonials: Array.from({ length: 3 }, () => ({
-    author: "ORGANISATEUR — À COMPLÉTER",
-    quote: "Témoignage à venir.",
-    media: {
-      kind: "placeholder" as const,
-      label: "",
-      hue: 30,
-      sat: 20,
-      light: 20,
-      angle: 45,
+    {
+      caption: "STAND UP COMEDY",
+      media: { kind: "image", src: "/images/Humour.png", alt: "Stand Up" },
     },
-  })),
+    {
+      caption: "FESTIVAL URBAIN",
+      media: { kind: "image", src: "/images/FIle%20d'attente%20soir.png", alt: "Festival" },
+    },
+    {
+      caption: "SOIRÉE ROOFTOP",
+      media: { kind: "image", src: "/images/chills.png", alt: "Rooftop" },
+    },
+  ],
+  testimonials: [],
 };
 
 /* -------------------------------------------------------------------------
@@ -390,14 +386,7 @@ export const proof: { heading: string; posters: ProofPoster[]; testimonials: Tes
 export const emotion: { quote: string; sub: string; media: MediaSource } = {
   quote: "Les meilleurs événements ne se racontent pas. Ils se vivent.",
   sub: "Vous vous occupez de ça. Nous, des billets.",
-  media: {
-    kind: "placeholder",
-    label: "PHOTO — FOULE DE DOS FACE À LA SCÈNE",
-    hue: 10,
-    sat: 25,
-    light: 12,
-    angle: -6,
-  },
+  media: { kind: "image", src: "/images/concert.png", alt: "Foule en concert" },
 };
 
 /* -------------------------------------------------------------------------
@@ -408,14 +397,7 @@ export const finalCta: { heading: string; cta: string; note: string; media: Medi
   heading: "Votre prochain événement commence ici.",
   cta: "Publier mon événement sur TIKÉ 229",
   note: "7 % par billet vendu. Rien d’autre.",
-  media: {
-    kind: "placeholder",
-    label: "PHOTO — SALLE QUI SE REMPLIT, VUE DE L’ENTRÉE",
-    hue: 20,
-    sat: 30,
-    light: 10,
-    angle: 8,
-  },
+  media: { kind: "image", src: "/images/FIle%20d'attente%20soir.png", alt: "File d'attente événement" },
 };
 
 /* -------------------------------------------------------------------------

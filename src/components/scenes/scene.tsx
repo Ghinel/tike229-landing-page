@@ -43,7 +43,7 @@ function CreateScene() {
           {fields.map((field, i) => (
             <div
               key={field.label}
-              className="flex items-baseline gap-2 border-b border-dashed border-bone/15 pb-1"
+              className="flex items-baseline gap-2 border-b border-solid border-bone/15 pb-1"
             >
               <dt className="w-12 shrink-0 font-mono text-[9px] tracking-[0.1em] text-muted uppercase">
                 {field.label}
@@ -93,7 +93,7 @@ function ShareScene() {
           {demo.destinations.map((destination, i) => (
             <li
               key={destination}
-              className={`sc-dest sc-dest-${i + 1} flex items-center justify-between rounded-[3px] border border-dashed border-bone/15 px-3 py-1.5 text-[11px]`}
+              className={`sc-dest sc-dest-${i + 1} flex items-center justify-between rounded-[3px] border border-solid border-bone/15 px-3 py-1.5 text-[11px]`}
             >
               <span>{destination}</span>
               <span className="font-mono text-[9px] tracking-[0.1em] text-accent uppercase">

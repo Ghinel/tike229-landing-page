@@ -9,7 +9,7 @@ export function SiteFooter() {
   return (
     <footer
       className={cn(
-        "relative border-t-2 border-dashed border-bone/15 bg-ink px-6 pt-14 wide:pb-14",
+        "relative border-t-2 border-solid border-bone/15 bg-ink px-6 pt-14 wide:pb-14",
         // Réserve la hauteur de la barre d'action mobile, qui recouvre le bas de page.
         siteConfig.showMobileCtaBar ? "pb-32" : "pb-14",
       )}

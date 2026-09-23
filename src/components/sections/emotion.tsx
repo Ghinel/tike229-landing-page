@@ -6,7 +6,7 @@ import { Media } from "../ui/media";
 /** Respiration : une image plein écran, une phrase. */
 export function Emotion() {
   return (
-    <section className="relative flex h-dvh items-end justify-center overflow-clip border-y-2 border-dashed border-bone/30">
+    <section className="relative flex h-dvh items-end justify-center overflow-clip border-y-2 border-solid border-bone/30">
       <Media media={emotion.media} sizes="100vw" drift />
 
       <div aria-hidden className="absolute inset-0 bg-linear-to-b from-black/10 to-black/90" />

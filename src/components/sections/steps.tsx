@@ -13,12 +13,12 @@ export function Steps() {
   return (
     <section
       id="comment"
-      className="ticket-build relative scroll-mt-24 border-t-2 border-dashed border-bone/15 bg-ink px-6 py-25"
+      className="ticket-build relative scroll-mt-24 border-t-2 border-solid border-bone/15 bg-ink px-6 py-25"
     >
       <Heading className="reveal mb-16">{stepsHeading}</Heading>
 
       <div className="grid gap-16 wide:grid-cols-[minmax(0,560px)_1fr] wide:items-center">
-        <ol className="relative max-w-[640px] border-l-2 border-dashed border-bone/25 pl-8">
+        <ol className="relative max-w-[640px] border-l-2 border-solid border-bone/25 pl-8">
           <span aria-hidden className="tb-progress absolute top-0 -left-0.5 h-full w-0.5 bg-accent" />
           {steps.map((step, i) => (
             <li key={step.n} className={`tb-step tb-step-${i + 1} relative mb-14 last:mb-0`}>
@@ -29,7 +29,7 @@ export function Steps() {
               <p className="mb-2 font-mono text-xs tracking-[0.08em] text-accent">
                 {step.n} — {step.title}
               </p>
-              <p className="text-lg leading-snug">{step.desc}</p>
+              <p className="text-lg leading-snug text-pretty">{step.desc}</p>
             </li>
           ))}
         </ol>

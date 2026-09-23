@@ -11,7 +11,7 @@ export function Kicker({ as: Tag = "p", className, ...props }: KickerProps) {
   return (
     <Tag
       className={cn(
-        "font-mono text-[11px] tracking-[0.08em] text-muted uppercase",
+        "reveal font-mono text-[11px] tracking-[0.08em] text-muted uppercase",
         className,
       )}
       {...props}

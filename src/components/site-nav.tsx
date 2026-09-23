@@ -88,9 +88,9 @@ export function SiteNav() {
       </nav>
 
       <div id={MENU_ID} hidden={!open} className="px-4 pb-3 wide:hidden">
-        <ul className="border-t border-dashed border-bone/20">
+        <ul className="border-t border-solid border-bone/20">
           {nav.links.map((link) => (
-            <li key={link.href} className="border-b border-dashed border-bone/20">
+            <li key={link.href} className="border-b border-solid border-bone/20">
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}

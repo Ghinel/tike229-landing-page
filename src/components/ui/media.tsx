@@ -40,6 +40,20 @@ export function Media({ media, className, sizes = "100vw", priority, drift }: Me
     );
   }
 
+  if (media.kind === "video") {
+    return (
+      <video
+        src={media.src}
+        poster={media.poster}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={cn("absolute inset-0 size-full object-cover", className)}
+      />
+    );
+  }
+
   return (
     <div
       aria-hidden

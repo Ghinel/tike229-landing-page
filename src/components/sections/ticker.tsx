@@ -9,7 +9,7 @@ import { cn } from "@/lib/cn";
 export function Ticker() {
   return (
     <section aria-hidden className="ticker overflow-hidden bg-ink py-7">
-      <div className="-ml-[2%] w-[104%] -rotate-1 border-y-2 border-dashed border-bone/20 bg-surface py-3.5">
+      <div className="-ml-[2%] w-[104%] -rotate-1 border-y-2 border-solid border-bone/20 bg-surface py-3.5">
         <div className="ticker-track flex w-max font-mono text-[12px] tracking-[0.14em] uppercase">
           {[0, 1].map((copy) =>
             ticker.items.map((item, i) => (

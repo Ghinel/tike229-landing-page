@@ -37,9 +37,9 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
         </p>
       ) : null}
 
-      {plan.tagline ? <p className="mb-5 text-sm">{plan.tagline}</p> : null}
+      {plan.tagline ? <p className="mb-5 text-sm text-pretty">{plan.tagline}</p> : null}
 
-      <ul className="border-t border-dashed border-bone/25 pt-4.5 text-sm leading-[1.9]">
+      <ul className="border-t border-solid border-bone/25 pt-4.5 text-sm leading-[1.9]">
         {plan.features.map((feature) => (
           <li key={feature}>{feature}</li>
         ))}
@@ -63,12 +63,12 @@ export function Pricing() {
 
   return (
     <section id="tarifs" className="relative scroll-mt-24 bg-surface px-6 py-25">
-      <Heading className="mb-3">{pricing.heading}</Heading>
+      <Heading className="mb-3 text-center">{pricing.heading}</Heading>
 
       <div
         className={cn(
           "mt-14 flex snap-x snap-mandatory items-stretch gap-6 overflow-x-auto pb-2 wide:overflow-visible wide:pb-0",
-          single && "wide:max-w-[520px]",
+          single && "wide:max-w-[520px] mx-auto",
         )}
       >
         {plans.map((plan) => (
@@ -76,7 +76,7 @@ export function Pricing() {
         ))}
       </div>
 
-      <Kicker className={cn("mt-10 text-center", single && "wide:text-left")}>{pricing.note}</Kicker>
+      <Kicker className="mt-10 text-center">{pricing.note}</Kicker>
     </section>
   );
 }

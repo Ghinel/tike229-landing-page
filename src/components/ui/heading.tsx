@@ -20,7 +20,7 @@ type HeadingProps = ComponentPropsWithoutRef<"h2"> & {
 export function Heading({ as: Tag = "h2", size = "md", className, ...props }: HeadingProps) {
   return (
     <Tag
-      className={cn("font-display font-extrabold text-balance", sizes[size], className)}
+      className={cn("reveal font-display font-extrabold text-balance", sizes[size], className)}
       {...props}
     />
   );

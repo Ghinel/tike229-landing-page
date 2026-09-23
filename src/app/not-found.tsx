@@ -17,7 +17,7 @@ export default function NotFound() {
       <SiteNav />
       <main
         id="contenu"
-        className="relative flex min-h-dvh flex-col justify-center border-b-2 border-dashed border-bone/30 px-6 pt-32 pb-24"
+        className="relative flex min-h-dvh flex-col justify-center border-b-2 border-solid border-bone/30 px-6 pt-32 pb-24"
       >
         <QrDots className="absolute top-28 right-8" />
 

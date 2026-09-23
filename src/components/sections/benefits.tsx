@@ -28,7 +28,7 @@ export function Benefits() {
         className="pointer-events-none absolute -top-[20%] -left-[10%] h-[140%] w-[70%] -rotate-18 bg-[radial-gradient(ellipse_at_center,rgba(198,62,30,0.35),transparent_70%)]"
       />
 
-      <Heading size="lg" className="reveal relative mb-16 max-w-[800px]">
+      <Heading size="lg" className="reveal relative mb-16 max-w-[800px] mx-auto text-center">
         {benefitsHeading.before}
         <span className="text-accent">{benefitsHeading.accent}</span>
         {benefitsHeading.after}
@@ -37,7 +37,7 @@ export function Benefits() {
       <div className="relative grid gap-10 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
         {benefits.map((benefit) => (
           <div key={benefit.text} className={cn("reveal", benefit.offset && "wide:mt-10")}>
-            <div className="relative mb-5 aspect-4/3 w-full rounded-md border-2 border-dashed border-accent/40">
+            <div className="relative mb-5 aspect-4/3 w-full rounded-md border-2 border-solid border-accent/40">
               <div className="absolute inset-0 overflow-hidden rounded-md">
                 {benefit.visual.kind === "scene" ? (
                   <Scene scene={benefit.visual.scene} />
@@ -48,7 +48,7 @@ export function Benefits() {
               <Notch position="top" />
               <Notch position="bottom" />
             </div>
-            <p className="max-w-[34ch] text-[17px] leading-relaxed">{benefit.text}</p>
+            <p className="max-w-[34ch] text-[17px] leading-relaxed text-pretty">{benefit.text}</p>
           </div>
         ))}
       </div>

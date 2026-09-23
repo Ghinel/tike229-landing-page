@@ -82,7 +82,7 @@ export function Ticket({
         {demo.link}
       </p>
 
-      <div className={cn("relative border-t border-dashed border-ink/30", lg ? "my-5" : "my-3")}>
+      <div className={cn("relative border-t border-solid border-ink/30", lg ? "my-5" : "my-3")}>
         <span
           aria-hidden
           className={cn(
