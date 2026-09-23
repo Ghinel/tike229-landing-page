@@ -52,7 +52,6 @@ export function Media({ media, className, sizes = "100vw", priority, drift }: Me
         muted
         playsInline
         preload="auto"
-        type="video/mp4"
         className={cn("absolute inset-0 size-full object-cover", className)}
       />
     );
