@@ -361,19 +361,19 @@ export const proof: { heading: string; posters: ProofPoster[]; testimonials: Tes
   posters: [
     {
       caption: "TIKÉ 229",
-      media: { kind: "image", src: "/images/WhatsApp Image 2026-09-23 at 06.12.17.jpeg", alt: "Événement TIKÉ 229" },
+      media: { kind: "image", src: "/images/event1.jpeg", alt: "Événement TIKÉ 229" },
     },
     {
       caption: "TIKÉ 229",
-      media: { kind: "image", src: "/images/WhatsApp Image 2026-09-23 at 06.16.56.jpeg", alt: "Événement TIKÉ 229" },
+      media: { kind: "image", src: "/images/event2.jpeg", alt: "Événement TIKÉ 229" },
     },
     {
       caption: "TIKÉ 229",
-      media: { kind: "image", src: "/images/WhatsApp Image 2026-09-23 at 06.17.58.jpeg", alt: "Événement TIKÉ 229" },
+      media: { kind: "image", src: "/images/event3.jpeg", alt: "Événement TIKÉ 229" },
     },
     {
       caption: "TIKÉ 229",
-      media: { kind: "image", src: "/images/WhatsApp Image 2026-09-23 at 06.21.25.jpeg", alt: "Événement TIKÉ 229" },
+      media: { kind: "image", src: "/images/event4.jpeg", alt: "Événement TIKÉ 229" },
     },
   ],
   testimonials: [],
