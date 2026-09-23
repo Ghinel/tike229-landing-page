@@ -73,9 +73,6 @@ export function Hero() {
           </a>
         </div>
 
-        <Kicker className="animate-fade-up" style={delay(600)}>
-          {hero.kicker}
-        </Kicker>
       </div>
     </section>
   );
