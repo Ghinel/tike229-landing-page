@@ -35,6 +35,8 @@ export function Media({ media, className, sizes = "100vw", priority, drift }: Me
         fill
         sizes={sizes}
         priority={priority}
+        // les images non‑prioritaires sont lazy‑loadées par défaut, on ajoute la qualité pour réduire le poids
+        quality={75}
         className={cn("object-cover", className)}
       />
     );
@@ -49,6 +51,7 @@ export function Media({ media, className, sizes = "100vw", priority, drift }: Me
         loop
         muted
         playsInline
+        preload="metadata"
         className={cn("absolute inset-0 size-full object-cover", className)}
       />
     );
