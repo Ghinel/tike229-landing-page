@@ -1,12 +1,20 @@
 import { proof } from "@/content/landing";
 
 import { Heading } from "../ui/heading";
+import { Kicker } from "../ui/kicker";
 import { Media } from "../ui/media";
 
 export function Proof() {
   return (
     <section className="relative border-t-2 border-solid border-bone/15 bg-ink px-6 py-25">
-      <Heading className="reveal mb-12">{proof.heading}</Heading>
+      {/* Titre centré et stylisé */}
+      <div className="reveal mb-14 flex flex-col items-center gap-3 text-center">
+        <Kicker>Ils font confiance à TIKÉ 229</Kicker>
+        <Heading size="lg" className="max-w-[18ch]">
+          {proof.heading}
+        </Heading>
+        <div className="mt-2 h-px w-16 bg-accent opacity-70" />
+      </div>
 
       <div className="mb-20 grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(180px,1fr))]">
         {proof.posters.map((poster, i) => (
