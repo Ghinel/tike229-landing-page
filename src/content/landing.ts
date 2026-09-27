@@ -277,43 +277,58 @@ export const steps: Step[] = [
 
 export const pricing: { heading: string; note: string; plans: PricingPlan[] } = {
   heading: "Un prix clair. Vous ne payez que si vous vendez.",
-  note: "AUCUN FRAIS D’ENTRÉE · AUCUN ABONNEMENT SUR LA FORMULE ESSENTIEL",
+  note: "TOUT COMPRIS · ÉVÉNEMENT EN LIGNE · LIEN DE VENTE · MOBILE MONEY · BILLET QR · AUCUN FRAIS D’ENTRÉE · AUCUN ABONNEMENT",
+  /*
+   * Les trois cartes sont les trois règles d'un seul barème, pas trois
+   * offres concurrentes. Barème confirmé le 26/09/2026 :
+   *   billet ≤ 5 000 F  → 7 %
+   *   billet ≥ 5 001 F  → 5 %
+   *   et jamais moins de 100 F de commission, quel que soit le prix.
+   * Le plancher ne mord qu'en dessous de 1 429 F, où 7 % font moins de
+   * 100 F ; au-dessus de 5 000 F, 5 % dépassent toujours le plancher.
+   */
   plans: [
     {
       index: "01",
-      name: "FORMULE 1",
+      name: "JUSQU’À 5 000 F",
       featured: false,
-      price: null,
-      tagline: null,
-      features: ["À REMPLIR — PRIX", "À REMPLIR — CIBLE", "À REMPLIR — INCLUS"],
-      cta: "À REMPLIR",
-      status: "draft",
+      price: { amount: "7", unit: "%" },
+      tagline: "par billet vendu · Billets à 5 000 F ou moins",
+      features: [
+        "Prélevés sur chaque vente",
+        "Aucun frais d’entrée",
+        "Si vous ne vendez rien, vous ne payez rien",
+      ],
+      cta: primaryCta,
+      status: "live",
     },
     {
       index: "02",
-      name: "ESSENTIEL",
+      name: "À PARTIR DE 5 001 F",
       featured: true,
-      price: { amount: "7", unit: "%" },
-      tagline: "par billet vendu · Tout organisateur qui démarre",
+      price: { amount: "5", unit: "%" },
+      tagline: "par billet vendu · Billets à 5 001 F et plus",
       features: [
-        "Événement en ligne",
-        "Lien de vente unique",
-        "Paiement Mobile Money",
-        "Billet QR automatique",
-        "Récupération par e-mail",
+        "Le même service, un taux plus bas",
+        "Plus le billet monte, moins vous payez",
+        "Sans plafond",
       ],
       cta: primaryCta,
       status: "live",
     },
     {
       index: "03",
-      name: "FORMULE 3",
+      name: "MINIMUM",
       featured: false,
-      price: null,
-      tagline: null,
-      features: ["À REMPLIR — PRIX", "À REMPLIR — CIBLE", "À REMPLIR — INCLUS"],
-      cta: "À REMPLIR",
-      status: "draft",
+      price: { amount: "100", unit: "F" },
+      tagline: "par billet · Quel que soit le prix du billet",
+      features: [
+        "Plancher de commission",
+        "Concerne les billets sous 1 429 F",
+        "Jamais au-dessus du taux normal",
+      ],
+      cta: primaryCta,
+      status: "live",
     },
   ],
 };
